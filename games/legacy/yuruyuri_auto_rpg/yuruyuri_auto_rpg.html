@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YuiHub</title>
+    <link rel="icon" href="../../../images/logo/logo.webp">
+    <link rel="stylesheet" href="../styles/style.css"/>
+
+    <style>
+      #yuiViewer {
+        background-color: violet;
+        border: 5px solid purple;
+        float: left;
+        height: 800px;
+        width: 400px;
+        overflow: auto;
+      }
+      #kyokoViewer {
+        background-color: wheat;
+        border: 5px solid yellow;
+        float: left;
+        height: 800px;
+        width: 400px;
+        overflow: auto;
+      }
+      #akariViewer {
+        background-color: tomato;
+        border: 5px solid red;
+        float: left;
+        height: 800px;
+        width: 400px;
+        overflow: auto;
+      }
+      #chinatsuViewer {
+        background-color: pink;
+        border: 5px solid hotpink;
+        float: left;
+        height: 800px;
+        width: 400px;
+        overflow: auto;
+      }
+      #logViewer {
+        background-color: black;
+        border: 5px solid crimson;
+        height: 800px;
+        width: 1000px;
+        overflow: auto;
+      }
+      #buildingViewer {
+        background-color: lime;
+        border: 5px solid green;
+        height: 1800px;
+        width: 1800px;
+        overflow: auto;
+      }
+      #fightStatViewerYui {
+        background-color: #be93d4;
+      }
+      #fightStatViewerKyoko {
+        background-color: #fedc56;
+      }
+      #fightStatViewerChinatsu {
+        background-color: #fc94af;
+      }
+      #fightStatViewerAkari {
+        background-color: #cd5c5c;
+      }
+      #shopInfoYui {
+        background-color: #be93d4;
+      }
+      #shopInfoKyoko {
+        background-color: #fedc56;
+      }
+      #shopInfoChinatsu {
+        background-color: #fc94af;
+      }
+      #shopInfoAkari {
+        background-color: #cd5c5c;
+      }
+      #mineInfoYui {
+        background-color: #be93d4;
+      }
+      #mineInfoKyoko {
+        background-color: #fedc56;
+      }
+      #mineInfoChinatsu {
+        background-color: #fc94af;
+      }
+      #mineInfoAkari {
+        background-color: #cd5c5c;
+      }
+      #genInfoYui {
+        background-color: #be93d4;
+      }
+      #genInfoKyoko {
+        background-color: #fedc56;
+      }
+      #genInfoChinatsu {
+        background-color: #fc94af;
+      }
+      #genInfoAkari {
+        background-color: #cd5c5c;
+      }
+      #classInfoYui {
+        background-color: #be93d4;
+      }
+      #classInfoKyoko {
+        background-color: #fedc56;
+      }
+      #classInfoChinatsu {
+        background-color: #fc94af;
+      }
+      #classInfoAkari {
+        background-color: #cd5c5c;
+      }
+    </style>
+  </head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <body>
+    <p>
+      <button id="btnSave" onclick="saveGame()">Save</button>
+      <button id="btnLoad" onclick="loadGame()">Load</button> <br /><br />
+      <a style="font-size: 40px" href="extra/documentation.html">Help</a><br />
+      <a style="font-size: 40px" href="extra/changelog.html">ChangeLog</a><br />
+      <a style="font-size: 40px" href="../../games.html">Return to games</a><br />
+      <br />
+      Version 1.0905.1
+    </p>
+    <br/>
+    <section id="yuiViewer">
+      <h10>Yui Funami</h10><br />
+      <h10 style="color: #291749">Gunner</h10>
+      <img
+        width="380px"
+        height="220px"
+        src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FEyX8E6nVgAE5_Os.jpg?v=1617808742803"
+      />
+      <section id="genInfoYui">
+        <h2>General Info</h2>
+        Current Activity:
+        <h4 id="yuiActivityTxt">0</h4>
+        <br />
+        Current Location:
+        <h4 id="yuiLocationTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="classInfoYui">
+        <h2>Class Info</h2>
+        Class:
+        <h4 id="yuiClassTxt">0</h4>
+        Class Buffs:
+        <h4>
+          <h9 style="color: blue; font-size: 16px">[Weapon Buff]</h9> Double Up
+          - Weapon has +1 base kill multiplier from the start.
+        </h4>
+        <h4>
+          <h9 style="color: blue; font-size: 16px">[Weapon Buff]</h9> Dual
+          Piercing - Every 50 Weapon Lvl weapons gain 2 kill multiplier rather
+          than 1.
+        </h4>
+        <br />
+      </section>
+      <br />
+      <section id="fightStatViewerYui">
+        <h2>Fighting Stats</h2>
+        Level:
+        <h4 id="yuiLevelTxt">0</h4>
+        <br />
+        XP:
+        <h4 id="yuiXPTxt">0</h4>
+        <br />
+        Power:
+        <h4 id="yuiPowerTxt">0</h4>
+        <br />
+        Weapon:
+        <h4 id="yuiWeaponTxt">0</h4>
+        <br />
+        Weapon Damage:
+        <h4 id="yuiWeaponDmgTxt">0</h4>
+        <br />
+        Weapon Kill Multiplier:
+        <h4 id="yuiWeaponKillMultTxt">0</h4>
+        <br />
+        Weapon Rating:
+        <h4 id="yuiWeaponRatingTxt">0</h4>
+        <br />
+        Enemies Defeated:
+        <h4 id="yuiDefeatsTxt">0</h4>
+        <br />
+        Failed Defeats:
+        <h4 id="yuiFailDefeatsTxt">0</h4>
+        <br />
+        Dungeon Key:
+        <h4 id="yuiDunKeyTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="mineInfoYui">
+        <h2>Mining Stats</h2>
+        Mining Level:
+        <h4 id="yuiMineLevelTxt">1</h4>
+        <br />
+        Pickaxe:
+        <h4 id="yuiPickaxeTxt">0</h4>
+        <br />
+        Ore Mined:
+        <h4 id="yuiOreMinedTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="shopInfoYui">
+        <h2>Store Stats</h2>
+        Money:
+        <h4 id="yuiMoneyTxt">0</h4>
+        <br />
+        Next Pickaxe Cost:
+        <h4 id="yuiNextPickaxeTxt">0</h4>
+        <br />
+        Next Dungeon Key Cost:
+        <h4 id="yuiNextDunKeyTxt">0</h4>
+        <br />
+        Inventory:
+        <h4 id="yuiInvTxt">0</h4>
+        <br />
+      </section>
+      <br />
+    </section>
+    <section id="kyokoViewer">
+      <h7>Kyoko Toshino</h7><br />
+      <h10 style="color: #ff6347">Tomato</h10>
+      <img
+        width="380px"
+        height="220px"
+        src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FEyX8CzNVIAQyetk.jpg?v=1617808776027"
+      />
+      <section id="genInfoKyoko">
+        <h2>General Info</h2>
+        Current Activity:
+        <h4 id="kyokoActivityTxt">0</h4>
+        <br />
+        Current Location:
+        <h4 id="kyokoLocationTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="classInfoKyoko">
+        <h2>Class Info</h2>
+        Class:
+        <h4 id="kyokoClassTxt">0</h4>
+        Class Buffs:
+        <h4>
+          <h9 style="color: lime; font-size: 16px">[Passive]</h9> Cram - *1.5
+          overall exp gain.
+        </h4>
+        <h4>
+          <h9 style="color: yellow; font-size: 16px">[Special Ability]</h9>
+          Hungry - Power gained upon consuming Rum Raisin dropped by enemies.
+        </h4>
+        Unlocked rum raisin:
+        <h4>
+          <h9 id="rumRaisinSmallTxt" style="color: purple; font-size: 16px"
+            >[Lv.1] [Small] Rum Raisin</h9
+          >
+        </h4>
+        <h4>
+          <h9 id="rumRaisinMediumTxt" style="color: purple; font-size: 16px"
+            >[Lv.10] [Medium] Rum Raisin</h9
+          >
+        </h4>
+        <h4>
+          <h9 id="rumRaisinLargeTxt" style="color: purple; font-size: 16px"
+            >[Lv.100] [Large] Rum Raisin</h9
+          >
+        </h4>
+        <br />
+      </section>
+      <br />
+      <section id="fightStatViewerKyoko">
+        <h2>Fighting Stats</h2>
+        Level:
+        <h4 id="kyokoLevelTxt">0</h4>
+        <br />
+        XP:
+        <h4 id="kyokoXPTxt">0</h4>
+        <br />
+        Power:
+        <h4 id="kyokoPowerTxt">0</h4>
+        <br />
+        Weapon:
+        <h4 id="kyokoWeaponTxt">0</h4>
+        <br />
+        Weapon Damage:
+        <h4 id="kyokoWeaponDmgTxt">0</h4>
+        <br />
+        Weapon Kill Multiplier:
+        <h4 id="kyokoWeaponKillMultTxt">0</h4>
+        <br />
+        Weapon Rating:
+        <h4 id="kyokoWeaponRatingTxt">0</h4>
+        <br />
+        Enemies Defeated:
+        <h4 id="kyokoDefeatsTxt">0</h4>
+        <br />
+        Failed Defeats:
+        <h4 id="kyokoFailDefeatsTxt">0</h4>
+        <br />
+        Dungeon Key:
+        <h4 id="kyokoDunKeyTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="mineInfoKyoko">
+        <h2>Mining Stats</h2>
+        Mining Level:
+        <h4 id="kyokoMineLevelTxt">1</h4>
+        <br />
+        Pickaxe:
+        <h4 id="kyokoPickaxeTxt">0</h4>
+        <br />
+        Ore Mined:
+        <h4 id="kyokoOreMinedTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="shopInfoKyoko">
+        <h2>Store Stats</h2>
+        Money:
+        <h4 id="kyokoMoneyTxt">0</h4>
+        <br />
+        Next Pickaxe Cost:
+        <h4 id="kyokoNextPickaxeTxt">0</h4>
+        <br />
+        Next Dungeon Key Cost:
+        <h4 id="kyokoNextDunKeyTxt">0</h4>
+        <br />
+        Inventory:
+        <h4 id="kyokoInvTxt">0</h4>
+        <br />
+      </section>
+      <br />
+    </section>
+    <section id="akariViewer">
+      <h8>Akari Akaza</h8><br />
+      <h10 style="color: lime">Ranger</h10>
+      <img
+        width="380px"
+        height="220px"
+        src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FEyX8GGpU8AEE2rc.jpg?v=1617808775894"
+      />
+      <section id="genInfoAkari">
+        <h2>General Info</h2>
+        Current Activity:
+        <h4 id="akariActivityTxt">0</h4>
+        <br />
+        Current Location:
+        <h4 id="akariLocationTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="classInfoAkari">
+        <h2>Class Info</h2>
+        Class:
+        <h4 id="akariClassTxt">0</h4>
+        Class Buffs:
+        <h4>
+          <h9 style="color: yellow; font-size: 16px">[Special Ability]</h9>
+          Transform: Anti-bully Ranger! (Phase I) - Increase total power against
+          Bully type enemies, which provide much more XP.
+        </h4>
+        <h4>
+          <h9 style="color: yellow; font-size: 16px">[Special Ability]</h9>
+          Transform: Anti-bully Ranger! (Phase II) - Rescue victims of bullying.
+          Provides a money reward.
+        </h4>
+        <h4>
+          <h9 style="color: yellow; font-size: 16px">[Every 50 Lv.]</h9>
+          Strengthen: Anti-bully Ranger! - Double money reward from rescues and
+          double XP gained from Bully type enemies.
+        </h4>
+        <h4>
+          <h9 style="color: red; font-size: 16px">[Debuff]</h9> Presence loss -
+          Another character may consume the XP Akari is about to receive.
+        </h4>
+        <br />
+      </section>
+      <br />
+      <section id="fightStatViewerAkari">
+        <h2>Fighting Stats</h2>
+        Level:
+        <h4 id="akariLevelTxt">0</h4>
+        <br />
+        XP:
+        <h4 id="akariXPTxt">0</h4>
+        <br />
+        Power:
+        <h4 id="akariPowerTxt">0</h4>
+        <br />
+        Weapon:
+        <h4 id="akariWeaponTxt">0</h4>
+        <br />
+        Weapon Damage:
+        <h4 id="akariWeaponDmgTxt">0</h4>
+        <br />
+        Weapon Kill Multiplier:
+        <h4 id="akariWeaponKillMultTxt">0</h4>
+        <br />
+        Weapon Rating:
+        <h4 id="akariWeaponRatingTxt">0</h4>
+        <br />
+        Enemies Defeated:
+        <h4 id="akariDefeatsTxt">0</h4>
+        <br />
+        Failed Defeats:
+        <h4 id="akariFailDefeatsTxt">0</h4>
+        <br />
+        Dungeon Key:
+        <h4 id="akariDunKeyTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="mineInfoAkari">
+        <h2>Mining Stats</h2>
+        Mining Level:
+        <h4 id="akariMineLevelTxt">1</h4>
+        <br />
+        Pickaxe:
+        <h4 id="akariPickaxeTxt">0</h4>
+        <br />
+        Ore Mined:
+        <h4 id="akariOreMinedTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="shopInfoAkari">
+        <h2>Store Stats</h2>
+        Money:
+        <h4 id="akariMoneyTxt">0</h4>
+        <br />
+        Next Pickaxe Cost:
+        <h4 id="akariNextPickaxeTxt">0</h4>
+        <br />
+        Next Dungeon Key Cost:
+        <h4 id="akariNextDunKeyTxt">0</h4>
+        <br />
+        Inventory:
+        <h4 id="akariInvTxt">0</h4>
+        <br />
+      </section>
+      <br />
+    </section>
+    <section id="chinatsuViewer">
+      <h9>Chinatsu Yoshikawa</h9><br />
+      <h10 style="color: #800080">Witch</h10>
+      <img
+        width="380px"
+        height="220px"
+        src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FEyX8D0XU4AIAYIx.jpg?v=1617808775701"
+      />
+      <section id="genInfoChinatsu">
+        <h2>General Info</h2>
+        Current Activity:
+        <h4 id="chinatsuActivityTxt">0</h4>
+        <br />
+        Current Location:
+        <h4 id="chinatsuLocationTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="classInfoChinatsu">
+        <h2>Class Info</h2>
+        Class:
+        <h4 id="chinatsuClassTxt">0</h4>
+        Class Buffs:
+        <h4>
+          Class Buffs:
+          <h9 style="color: yellow; font-size: 16px">[Special Ability]</h9>
+          Chinatsurun - Randomly use spells which have varying effects.
+        </h4>
+        <br />
+        Class Fighting Spells:
+        <h4 id="spellMiruHammer1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Common Fighting Spell][Lv.1]</h9
+          >
+          Finishing move, Mirakurun hammer! (Chinatsu ver. Part I) - Double
+          power output for the next encounter.
+        </h4>
+        <h4 id="spellMiruHammer2Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Common Fighting Spell][Lv.10]</h9
+          >
+          Finishing move, Mirakurun hammer! (Chinatsu ver. Part II) - Quadruple
+          power output for the next encounter.
+        </h4>
+        <h4 id="spellMiruHammer3Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Common Fighting Spell][Lv.100]</h9
+          >
+          Finishing move, Mirakurun hammer! (Chinatsu ver. Part III) - Octuple
+          power output for the next encounter.
+        </h4>
+        <h4 id="spellMiruDecoy1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Common Fighting Spell][Lv.10]</h9
+          >
+          Mirukurun Magic Decoy! (Chinatsu ver.) - Half an enemies power for one
+          encounter.
+        </h4>
+        <h4 id="spellMiruXPGain1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Uncommon Fighting Spell][Lv.1]</h9
+          >
+          Mirakurun XP Gain! (Chinatsu ver. Part I) - 10x XP gain for the next
+          encounter.
+        </h4>
+        <h4 id="spellMiruXPGain2Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Uncommon Fighting Spell][Lv.10]</h9
+          >
+          Mirakurun XP Gain! (Chinatsu ver. Part II) - 20x XP gain for the next
+          encounter.
+        </h4>
+        <h4 id="spellMiruXPGain3Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Uncommon Fighting Spell][Lv.100]</h9
+          >
+          Mirakurun XP Gain! (Chinatsu ver. Part III) - 30x XP gain for the next
+          encounter.
+        </h4>
+        <h4 id="spellMiruSuperHammer1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Rare Fighting Spell][Lv.1]</h9
+          >
+          Mirukurun Super Hammer! (Chinatsu ver. Part I) - Double enemy kill
+          multiplier for next attack.
+        </h4>
+        <h4 id="spellMiruSuperHammer2Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Rare Fighting Spell][Lv.10]</h9
+          >
+          Mirukurun Super Hammer! (Chinatsu ver. Part II) - Quadruple enemy kill
+          multiplier for next attack.
+        </h4>
+        <h4 id="spellMiruSuperHammer3Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Rare Fighting Spell][Lv.100]</h9
+          >
+          Mirukurun Super Hammer! (Chinatsu ver. Part III) - Octuple enemy kill
+          multiplier for next attack.
+        </h4>
+        <h4 id="spellMiruSuperNuke1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Super Rare Fighting Spell][Lv.1]</h9
+          >
+          Mirukurun Super Nuke! (Chinatsu ver. Part I) - Kill multiplier x50
+          during the next encounter.
+        </h4>
+        <h4 id="spellMiruSuperNuke2Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Super Rare Fighting Spell][Lv.10]</h9
+          >
+          Mirukurun Super Nuke! (Chinatsu ver. Part II) - Kill multiplier x100
+          during the next encounter.
+        </h4>
+        <h4 id="spellMiruSuperNuke3Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Super Rare Fighting Spell][Lv.100]</h9
+          >
+          Mirukurun Super Nuke! (Chinatsu ver. Part III) - Kill multiplier x200
+          during the next encounter.
+        </h4>
+        <br />
+        Class Mining Spells:
+        <h4 id="spellMiruPickaxe1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Uncommon Mining Spell][Lv.1]</h9
+          >
+          Mirukurun Pickaxe! (Chinatsu ver.) - Mine 10 ores at once.
+        </h4>
+        <h4 id="spellMiruSuperPickaxe1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Rare Mining Spell][Lv.50]</h9
+          >
+          Mirukurun Super Pickaxe! (Chinatsu ver.) - Mine 100 ores at once.
+        </h4>
+        <h4 id="spellMiruMegaPickaxe1Txt">
+          <h9 style="color: purple; font-size: 16px"
+            >[Super Rare Mining Spell][Lv.100]</h9
+          >
+          Mirukurun Mega Pickaxe! (Chinatsu ver.) - Mine 1000 ores at once.
+        </h4>
+        <br />
+      </section>
+      <br />
+      <section id="fightStatViewerChinatsu">
+        <h2>Fighting Stats</h2>
+        Level:
+        <h4 id="chinatsuLevelTxt">0</h4>
+        <br />
+        XP:
+        <h4 id="chinatsuXPTxt">0</h4>
+        <br />
+        Power:
+        <h4 id="chinatsuPowerTxt">0</h4>
+        <br />
+        Weapon:
+        <h4 id="chinatsuWeaponTxt">0</h4>
+        <br />
+        Weapon Damage:
+        <h4 id="chinatsuWeaponDmgTxt">0</h4>
+        <br />
+        Weapon Kill Multiplier:
+        <h4 id="chinatsuWeaponKillMultTxt">0</h4>
+        <br />
+        Weapon Rating:
+        <h4 id="chinatsuWeaponRatingTxt">0</h4>
+        <br />
+        Enemies Defeated:
+        <h4 id="chinatsuDefeatsTxt">0</h4>
+        <br />
+        Failed Defeats:
+        <h4 id="chinatsuFailDefeatsTxt">0</h4>
+        <br />
+        Dungeon Key:
+        <h4 id="chinatsuDunKeyTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="mineInfoChinatsu">
+        <h2>Mining Stats</h2>
+        Mining Level:
+        <h4 id="chinatsuMineLevelTxt">1</h4>
+        <br />
+        Pickaxe:
+        <h4 id="chinatsuPickaxeTxt">0</h4>
+        <br />
+        Ore Mined:
+        <h4 id="chinatsuOreMinedTxt">0</h4>
+        <br />
+      </section>
+      <br />
+      <section id="shopInfoChinatsu">
+        <h2>Store Stats</h2>
+        Money:
+        <h4 id="chinatsuMoneyTxt">0</h4>
+        <br />
+        Next Pickaxe Cost:
+        <h4 id="chinatsuNextPickaxeTxt">0</h4>
+        <br />
+        Next Dungeon Key Cost:
+        <h4 id="chinatsuNextDunKeyTxt">0</h4>
+        <br />
+        Inventory:
+        <h4 id="chinatsuInvTxt">0</h4>
+        <br />
+      </section>
+      <br />
+    </section>
+    <section id="logViewer">
+      <p id="actionLog">None</p>
+    </section>
+
+    <script>
+      let currentDungeon;
+      let currentMine;
+      let currentOre;
+      let currentRangerDebuff;
+      let enemyName;
+      let currentEnemy;
+      let currentEnemyDrop;
+      let currentEnemyWeaponDrop;
+      let currentEnemyRumRaisinDrop;
+      let currentEnemyLevel;
+      let currentEnemyPower;
+      let enemyRand;
+      let currentMoneyEarning;
+      let currentXPEarning;
+      let currentXPEarningMultiplier = 1;
+      let currentCharacter1Power;
+      let currentCharacter2XPEarning;
+      let currentAntiBullyEvent = "";
+      let reqXp;
+      let reqOre;
+      let character1;
+      let character2;
+      let characters = ["Yui", "Kyoko", "Akari", "Chinatsu"];
+      let bullyVictims = [
+        "an Old Man",
+        "an Old Woman",
+        "a Baby",
+        "a Child",
+        "a Man",
+        "a Woman",
+        "a Gamer",
+        "a Dog",
+        "a Snake",
+        "a Cat",
+        "a Tomato",
+      ];
+      let events = [];
+      let activities = ["Fighting", "Mining", "Shopping"];
+      let yuiInvBR;
+      let chinatsuInvBR;
+      let kyokoInvBR;
+      let AkariInvBR;
+      let commonFightingSpells = ["MiruHammer", "MiruDecoy"];
+      let uncommonFightingSpells = ["MiruXPGain"];
+      let rareFightingSpells = ["MiruSuperHammer"];
+      let superRareFightingSpells = ["MiruSuperNuke"];
+      let uncommonMiningSpells = ["MiruPickaxe"];
+      let rareMiningSpells = ["MiruSuperPickaxe"];
+      let superRareMiningSpells = ["MiruMegaPickaxe"];
+      let spellMiruHammer1 = document.getElementById("spellMiruHammer1Txt");
+      let spellMiruHammer2 = document.getElementById("spellMiruHammer2Txt");
+      let spellMiruHammer3 = document.getElementById("spellMiruHammer3Txt");
+      let spellMiruDecoy1 = document.getElementById("spellMiruDecoy1Txt");
+      let spellMiruSuperHammer1 = document.getElementById(
+        "spellMiruSuperHammer1Txt"
+      );
+      let spellMiruSuperHammer2 = document.getElementById(
+        "spellMiruSuperHammer2Txt"
+      );
+      let spellMiruSuperHammer3 = document.getElementById(
+        "spellMiruSuperHammer3Txt"
+      );
+      let spellMiruXPGain1 = document.getElementById("spellMiruXPGain1Txt");
+      let spellMiruXPGain2 = document.getElementById("spellMiruXPGain2Txt");
+      let spellMiruXPGain3 = document.getElementById("spellMiruXPGain3Txt");
+      let spellMiruSuperNuke1 = document.getElementById(
+        "spellMiruSuperNuke1Txt"
+      );
+      let spellMiruSuperNuke2 = document.getElementById(
+        "spellMiruSuperNuke2Txt"
+      );
+      let spellMiruSuperNuke3 = document.getElementById(
+        "spellMiruSuperNuke3Txt"
+      );
+      let spellMiruPickaxe1 = document.getElementById("spellMiruPickaxe1Txt");
+      let spellMiruSuperPickaxe1 = document.getElementById(
+        "spellMiruSuperPickaxe1Txt"
+      );
+      let spellMiruMegaPickaxe1 = document.getElementById(
+        "spellMiruMegaPickaxe1Txt"
+      );
+      let rumRaisinSmall = document.getElementById("rumRaisinSmallTxt");
+      let rumRaisinMedium = document.getElementById("rumRaisinMediumTxt");
+      let rumRaisinLarge = document.getElementById("rumRaisinLargeTxt");
+      let spellKillMult = 1;
+      let spellPowMult = 1;
+      let spellPowReductionMult = 1;
+      let spellOreMineAdd = 0;
+      let mineSpellRecursionCheck = "no";
+      //Removes all spell text on load so it can be added back according to the characters level
+      spellMiruHammer1.style.display = "none";
+      spellMiruHammer2.style.display = "none";
+      spellMiruHammer3.style.display = "none";
+      spellMiruDecoy1.style.display = "none";
+      spellMiruSuperHammer1.style.display = "none";
+      spellMiruSuperHammer2.style.display = "none";
+      spellMiruSuperHammer3.style.display = "none";
+      spellMiruXPGain1.style.display = "none";
+      spellMiruXPGain2.style.display = "none";
+      spellMiruXPGain3.style.display = "none";
+      spellMiruSuperNuke1.style.display = "none";
+      spellMiruSuperNuke2.style.display = "none";
+      spellMiruSuperNuke3.style.display = "none";
+      spellMiruPickaxe1.style.display = "none";
+      spellMiruSuperPickaxe1.style.display = "none";
+      spellMiruMegaPickaxe1.style.display = "none";
+      //Removes rum raisins on load to be added back after the level check.
+      rumRaisinMedium.style.display = "none";
+      rumRaisinLarge.style.display = "none";
+      //Pickaxe Sprites
+      let t1PickImg =
+        '<br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FstonePick.png?v=1619568490189"><br>';
+      let copperPickImg =
+        '<br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FCopperPick264.png?v=1626812128980"><br>';
+      let t2PickImg =
+        '<br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FironPick.png?v=1619569152640"><br>';
+      let t4PickImg =
+        '<br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FtitPick.png?v=1619569885068"><br>';
+      let goldPickImg =
+        '<br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FGoldPick264.png?v=1626812129079"><br>';
+
+      //Sword Sprites
+      let basicSwordImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FbasicSword.png?v=1625270576182"><br>';
+      let copperSwordImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FcopperSword.png?v=1619616161412"><br>';
+      let ironSwordImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FironSword.png?v=1619616165501"><br>';
+      let titaniumSwordImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FtitaniumSword.png?v=1619616167556"><br>';
+
+      //Dual Pistols Sprites
+      let basicDualPistolsImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FBasic%20Dual%20Pistols%20264.png?v=1625667363906"><br>';
+      let copperDualPistolsImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FCopper%20Dual%20Pistols%20264.png?v=1625675802135"><br>';
+      let ironDualPistolsImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FIron%20Dual%20Pistols%20264.png?v=1625675802136"><br>';
+      let titaniumDualPistolsImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FTitanium%20Dual%20Pistols%20264.png?v=1625675802190"><br>';
+      let goldDualPistolsImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FGold%20Dual%20Pistols%20264.png?v=1626013047845"><br>';
+
+      //Tomato Launcher Sprites
+      let basicTomatoLauncherImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FBasic%20Tomato%20launcher%20264.png?v=1625675099055"><br>';
+      let copperTomatoLauncherImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FCopper%20Tomato%20launcher%20264.png?v=1625676548897"><br>';
+      let ironTomatoLauncherImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FIron%20Tomato%20launcher%20264.png?v=1625676548997"><br>';
+      let titaniumTomatoLauncherImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FTitanium%20Tomato%20launcher%20264.png?v=1625676548970"><br>';
+      let goldTomatoLauncherImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FGold%20Tomato%20launcher%20264.png?v=1626013047845"><br>';
+
+      //Odango Sprites
+      let basicOdangoImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FBasic%20Odango%20264.png?v=1625670135788"><br>';
+      let copperOdangoImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FCopper%20Odango%20264.png?v=1625677353311"><br>';
+      let ironOdangoImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FIron%20Odango%20264.png?v=1625677353388"><br>';
+      let titaniumOdangoImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FTitanium%20Odango%20264.png?v=1625677353311"><br>';
+      let goldOdangoImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FGold%20Odango%20264.png?v=1626013047845"><br>';
+
+      //Wand Sprites
+      let basicWandImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FBasic%20Wand%20264.png?v=1625667697840"><br>';
+      let copperWandImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FCopper%20Wand%20264.png?v=1625677948465"><br>';
+      let ironWandImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FIron%20Wand%20264.png?v=1625677948557"><br>';
+      let titaniumWandImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FTitanium%20Wand%20264.png?v=1625677948465"><br>';
+      let goldWandImg =
+        '<br><br><img width = "128px" height = "128px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2FGold%20Wand%20264.png?v=1626013047949"><br>';
+
+      //Dungeon Sprites
+      let dungeonUndeadCorridorImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fundeadcorridor.jpeg?v=1626299779407">';
+      let dungeonWcdonaldsBasementImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fwcdonaldsbasement.jpeg?v=1626301136943">';
+      let dungeonRumRaisinFactoryImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Frumraisinfact.jpeg?v=1626300050919">';
+      let dungeonBeachImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fbeach.jpeg?v=1626300053543">';
+      //Mines Sprite
+      let minesImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fwcbasement.jpeg?v=1626300048216">';
+      //Store Sprite
+      let storeImg =
+        '<br><br><img width = "320px" height = "200px" src="https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fmpc-hc_SdUVEVSkTF.jpg?v=1626301369639">';
+      //Dungeons
+      let dungeonMonsterTypes = {
+        MonsterClasses: ["Weak", "Normal", "Tough", "Elite", "Boss"],
+        WeakBasePower: 1,
+        WeakBaseXP: 2,
+        NormalBasePower: 5,
+        NormalBaseXP: 10,
+        ToughBasePower: 10,
+        ToughBaseXP: 20,
+        EliteBasePower: 20,
+        EliteBaseXP: 40,
+        BossBasePower: 40,
+        BossBaseXP: 80,
+      };
+      let objDungeonMine1 = {
+        DungeonName: `Undead Corridor [DUNGEON 1] ${dungeonUndeadCorridorImg}`,
+        Weak: ["[WEAK] Bat", "[WEAK] Green Slime", "[WEAK] Rat"],
+        Normal: ["[NORMAL] Ghost"],
+        Tough: ["[TOUGH] Zombie"],
+        Elite: ["[ELITE] Rock Golem"],
+        Boss: ["None"],
+        MonsterPowerMultiplier: 1,
+        MonsterXPMultiplier: 1,
+        MonsterDrops: [
+          "[TRASH] Bat Wing",
+          "[TRASH] Slime Ball",
+          "[TRASH] Rags",
+          "[TRASH] Geode",
+          "[TRASH] Rat Tail",
+        ],
+      };
+      let objDungeonWcDonalds = {
+        DungeonName: `Wcdonalds Basement [DUNGEON 2] ${dungeonWcdonaldsBasementImg}`,
+        Key: "Wcdonalds Basement Key",
+        Weak: ["[WEAK] Cheeseburger Slime"],
+        Normal: ["[NORMAL] Big Wac Demon"],
+        Tough: ["[TOUGH] Wcdonalds Employee"],
+        Elite: ["[ELITE] Wcdonalds Security Guard"],
+        Boss: ["[BOSS] Wcdonalds Manager"],
+        MonsterPowerMultiplier: 2,
+        MonsterXPMultiplier: 2,
+        MonsterDrops: [
+          "[TRASH] Empty Wcdonalds Box",
+          "[TRASH] Torn Wcdonalds Uniform",
+          "[TRASH] Torn Wcdonalds Suit",
+        ],
+      };
+      let objDungeonRumRaisinFactory = {
+        DungeonName: `Rum Raisin Factory [DUNGEON 3] ${dungeonRumRaisinFactoryImg}`,
+        Key: "Factory Access Pass",
+        Weak: [
+          "[WEAK] Rogue Machine",
+          "[WEAK] Rum Slime",
+          "[WEAK] Raisin Slime",
+        ],
+        Normal: ["[NORMAL] Factory Worker"],
+        Tough: ["[TOUGH] Factory Security Guard"],
+        Elite: ["[ELITE] Rum Raisin Monster"],
+        Boss: ["[BOSS] Factory Manager"],
+        MonsterPowerMultiplier: 3,
+        MonsterXPMultiplier: 3,
+        MonsterDrops: [
+          "[TRASH] Torn Factory Uniform",
+          "[TRASH] Machine Junk",
+          "[TRASH] Empty Rum Raisin Tub",
+          "[TRASH] Torn Factory Uniform",
+        ],
+      };
+      let objDungeonBeach = {
+        DungeonName: `Beach [DUNGEON 4] ${dungeonBeachImg}`,
+        Key: "Beach Access Pass",
+        Weak: [
+          "[WEAK] Sand Slime",
+          "[WEAK] Water Slime",
+          "[WEAK] Yellow Slime",
+        ],
+        Normal: [
+          "[NORMAL] Small Crab",
+          "[NORMAL] Weird Old Man with Sunglasses",
+        ],
+        Tough: ["[TOUGH] Large Crab", "[TOUGH] Lobster"],
+        Elite: ["[ELITE] Shark"],
+        Boss: ["[BOSS] Mega Shark", "[BOSS] Mega Crab"],
+        MonsterPowerMultiplier: 4,
+        MonsterXPMultiplier: 4,
+        MonsterDrops: [
+          "[TRASH] Damaged Swimsuit",
+          "[TRASH] Shark Tooth",
+          "[TRASH] Bucket",
+          "[TRASH] Crab Claw",
+          "[TRASH] Broken Sunglasses",
+        ],
+      };
+
+      let objWeapons = {
+        SwordBasePower: 25,
+        SwordBaseKillMultiplier: 1,
+        DualPistolsBasePower: 20,
+        DualPistolsBaseKillMultiplier: 2,
+        TomatoLauncherBasePower: 15,
+        TomatoLauncherBaseKillMultiplier: 1,
+        OdangoBasePower: 15,
+        OdangoBaseKillMultiplier: 1,
+        WandBasePower: 20,
+        WandBaseKillMultiplier: 1,
+      };
+
+      //Characters (ALWAYS REMEMBER TO ADD NEW PARAMETERS TO THE UPDATE FUNCTION ONCE ADDED TO A CHARACTER. This is to ensure that upon loading an old save these new parameters get implemented instead of displaying as "NaN".)
+      let objCharacterYui = {
+        FirstName: "Yui",
+        Surname: "Funami",
+        Location: "Starting Zone",
+        Activity: "Fighting",
+        Class: "Gunner",
+        Power: 5,
+        BasePower: 5,
+        Money: 0,
+        Level: 1,
+        XP: 0,
+        EnemiesDefeated: 0,
+        FailedDefeats: 0,
+        Pickaxe: `Stone Pickaxe ${t1PickImg}`,
+        Weapon: `Basic Dual Pistols ${basicDualPistolsImg}`,
+        Key: "None",
+        WeaponDamage: objWeapons.DualPistolsBasePower,
+        WeaponKillMult: objWeapons.DualPistolsBaseKillMultiplier,
+        WeaponRating:
+          objWeapons.DualPistolsBasePower *
+          objWeapons.DualPistolsBaseKillMultiplier,
+        Inventory: [],
+        multPowLvl: 0.75,
+        multSellDrops: 1,
+        XPMult: 1,
+        KeyCost: 100,
+        PickaxeCost: 100,
+        MinedOre: 0,
+        MineLevel: 1,
+        MineAmount: 1,
+      };
+      let objCharacterKyoko = {
+        FirstName: "Kyoko",
+        Surname: "Toshino",
+        Location: "Starting Zone",
+        Activity: "Fighting",
+        Class: "Tomato",
+        Power: 5,
+        BasePower: 5,
+        Money: 0,
+        Level: 1,
+        XP: 0,
+        EnemiesDefeated: 0,
+        FailedDefeats: 0,
+        Pickaxe: `Stone Pickaxe ${t1PickImg}`,
+        Weapon: `Basic Tomato Launcher ${basicTomatoLauncherImg}`,
+        Key: "None",
+        WeaponDamage: objWeapons.TomatoLauncherBasePower,
+        WeaponKillMult: objWeapons.TomatoLauncherBaseKillMultiplier,
+        WeaponRating:
+          objWeapons.TomatoLauncherBasePower *
+          objWeapons.TomatoLauncherBaseKillMultiplier,
+        Inventory: [],
+        multPowLvl: 0.75,
+        multSellDrops: 1,
+        XPMult: 1.5,
+        KeyCost: 100,
+        PickaxeCost: 100,
+        MinedOre: 0,
+        MineLevel: 1,
+        MineAmount: 1,
+      };
+      let objCharacterAkari = {
+        FirstName: "Akari",
+        Surname: "Akaza",
+        Location: "Starting Zone",
+        Activity: "Fighting",
+        Class: "Ranger",
+        Power: 5,
+        BasePower: 5,
+        Money: 0,
+        Level: 1,
+        XP: 0,
+        EnemiesDefeated: 0,
+        FailedDefeats: 0,
+        Pickaxe: `Stone Pickaxe ${t1PickImg}`,
+        Weapon: `Basic Odango ${basicOdangoImg}`,
+        Key: "None",
+        WeaponDamage: objWeapons.OdangoBasePower,
+        WeaponKillMult: objWeapons.OdangoBaseKillMultiplier,
+        WeaponRating:
+          objWeapons.OdangoBasePower * objWeapons.OdangoBaseKillMultiplier,
+        Inventory: [],
+        multPowLvl: 0.75,
+        multSellDrops: 1,
+        XPMult: 1,
+        KeyCost: 100,
+        PickaxeCost: 100,
+        MinedOre: 0,
+        MineLevel: 1,
+        MineAmount: 1,
+      };
+      let objCharacterChinatsu = {
+        FirstName: "Chinatsu",
+        Surname: "Yoshikawa",
+        Location: "Starting Zone",
+        Activity: "Fighting",
+        Class: "Witch",
+        Power: 5,
+        BasePower: 5,
+        Money: 0,
+        Level: 1,
+        XP: 0,
+        EnemiesDefeated: 0,
+        FailedDefeats: 0,
+        Pickaxe: `Stone Pickaxe ${t1PickImg}`,
+        Weapon: `Basic Wand ${basicWandImg}`,
+        Key: "None",
+        WeaponDamage: objWeapons.WandBasePower,
+        WeaponKillMult: objWeapons.WandBaseKillMultiplier,
+        WeaponRating:
+          objWeapons.WandBasePower * objWeapons.WandBaseKillMultiplier,
+        Inventory: [],
+        multPowLvl: 0.75,
+        multSellDrops: 1,
+        XPMult: 1,
+        KeyCost: 100,
+        PickaxeCost: 100,
+        MinedOre: 0,
+        MineLevel: 1,
+        MineAmount: 1,
+      };
+      function dungeonGen() {
+        //Generates a dungeon for the character to fight in
+        if (character1.Key === "None") {
+          currentDungeon = objDungeonMine1;
+          character1.Location = currentDungeon.DungeonName;
+        } else if (character1.Key === objDungeonWcDonalds.Key) {
+          currentDungeon = objDungeonWcDonalds;
+          character1.Location = currentDungeon.DungeonName;
+        } else if (
+          character1.Key === "Factory Key" ||
+          character1.Key === objDungeonRumRaisinFactory.Key
+        ) {
+          currentDungeon = objDungeonRumRaisinFactory;
+          character1.Location = currentDungeon.DungeonName;
+        } else if (character1.Key === objDungeonBeach.Key) {
+          currentDungeon = objDungeonBeach;
+          character1.Location = currentDungeon.DungeonName;
+        }
+      }
+
+      function mineGen() {
+        //Stops it from occuring in a loop once spell takes place.
+        if (mineSpellRecursionCheck === "no") {
+          //Mining spells for witch class.
+          spellGenMining();
+        }
+        let availableOre;
+        //Generates a mine for the character to take mine in and mines an ore
+        if (character1.Pickaxe === `Stone Pickaxe ${t1PickImg}`) {
+          availableOre = ["Rock"];
+          currentOre =
+            availableOre[Math.floor(Math.random() * availableOre.length)];
+          character1.Inventory.push(currentOre);
+        } else if (character1.Pickaxe === `Copper Pickaxe ${copperPickImg}`) {
+          availableOre = ["Rock", "Coal"];
+          currentOre =
+            availableOre[Math.floor(Math.random() * availableOre.length)];
+          character1.Inventory.push(currentOre);
+        } else if (character1.Pickaxe === `Iron Pickaxe ${t2PickImg}`) {
+          availableOre = ["Rock", "Coal", "Copper"];
+          currentOre =
+            availableOre[Math.floor(Math.random() * availableOre.length)];
+          character1.Inventory.push(currentOre);
+        } else if (character1.Pickaxe === `Titanium Pickaxe ${t4PickImg}`) {
+          availableOre = ["Rock", "Coal", "Copper", "Iron"];
+          currentOre =
+            availableOre[Math.floor(Math.random() * availableOre.length)];
+          character1.Inventory.push(currentOre);
+        } else if (character1.Pickaxe === `Gold Pickaxe ${goldPickImg}`) {
+          availableOre = ["Rock", "Coal", "Copper", "Iron", "Titanium"];
+          currentOre =
+            availableOre[Math.floor(Math.random() * availableOre.length)];
+          character1.Inventory.push(currentOre);
+        }
+        character1.MinedOre = character1.MinedOre + 1;
+        character1.Location = `The Endless Mine ${minesImg}`;
+      }
+      function weaponGen() {
+        //WORK ON THIS. NEXT STEP IS RANDOMLY CHOOSING WHAT IS APPLIED TO THE WEAPON.
+        let currentWeaponType;
+        let sprite;
+        let swordSprite;
+        let dualPistolSprite;
+        let tomatoLauncherSprite;
+        let odangoSprite;
+        let wandSprite;
+        let weaponName;
+        let basePower;
+        let totalPower;
+        let materialMultiplier;
+        let materialType;
+        let qualityMultiplier;
+        let qualityType;
+        let powerTypeMultiplier;
+        let powerType;
+        let weaponLevel;
+        let weaponRating;
+        let killMultiplier;
+        let killMultiplierMultipler = 1;
+        let randomWeaponQualityNumber = Math.random() * 100; //Generates random single number percentage to 100
+        let randomWeaponPowerTypeNumber = Math.random() * 100; //Generates random single number percentage to 100
+        let randomWeaponLevel = Math.floor(
+          Math.random() * character1.Level + 1
+        );
+
+        if (character1.Class === "Gunner") {
+          currentWeaponType = "Dual Pistols";
+        } else if (character1.Class === "Tomato") {
+          currentWeaponType = "Tomato Launcher";
+        } else if (character1.Class === "Ranger") {
+          currentWeaponType = "Odango";
+        } else if (character1.Class === "Witch") {
+          currentWeaponType = "Wand";
+        }
+
+        //If statement goes through different percentages until it reaches the correct generated random single number to select a Material for the weapon.
+        if (randomWeaponLevel >= 80) {
+          materialMultiplier = 16;
+          materialType = "Gold";
+          dualPistolSprite = goldDualPistolsImg;
+          tomatoLauncherSprite = goldTomatoLauncherImg;
+          odangoSprite = goldOdangoImg;
+          wandSprite = goldWandImg;
+        } else if (randomWeaponLevel >= 40) {
+          materialMultiplier = 8;
+          materialType = "Titanium";
+          swordSprite = titaniumSwordImg;
+          dualPistolSprite = titaniumDualPistolsImg;
+          tomatoLauncherSprite = titaniumTomatoLauncherImg;
+          odangoSprite = titaniumOdangoImg;
+          wandSprite = titaniumWandImg;
+        } else if (randomWeaponLevel >= 20) {
+          materialMultiplier = 4;
+          materialType = "Iron";
+          swordSprite = ironSwordImg;
+          dualPistolSprite = ironDualPistolsImg;
+          tomatoLauncherSprite = ironTomatoLauncherImg;
+          odangoSprite = ironOdangoImg;
+          wandSprite = ironWandImg;
+        } else if (randomWeaponLevel >= 10) {
+          materialMultiplier = 2;
+          materialType = "Copper";
+          swordSprite = copperSwordImg;
+          dualPistolSprite = copperDualPistolsImg;
+          tomatoLauncherSprite = copperTomatoLauncherImg;
+          odangoSprite = copperOdangoImg;
+          wandSprite = copperWandImg;
+        } else if (randomWeaponLevel >= 0) {
+          materialMultiplier = 1;
+          materialType = "Basic";
+          swordSprite = basicSwordImg;
+          dualPistolSprite = basicDualPistolsImg;
+          tomatoLauncherSprite = basicTomatoLauncherImg;
+          odangoSprite = basicOdangoImg;
+          wandSprite = basicWandImg;
+        }
+        //If statement goes through different percentages until it reaches the correct generated random single number to select a Quality for the weapon.
+        if (randomWeaponQualityNumber >= 99.5) {
+          qualityMultiplier = 20;
+          qualityType =
+            "<h9 style='color:white; font-size:16px;'>Perfect Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 99) {
+          qualityMultiplier = 15;
+          qualityType =
+            "<h9 style='color:pink; font-size:16px;'>Exceptional Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 98) {
+          qualityMultiplier = 10;
+          qualityType =
+            "<h9 style='color:purple; font-size:16px;'>Brilliant Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 97) {
+          qualityMultiplier = 5;
+          qualityType =
+            "<h9 style='color:yellow; font-size:16px;'>Amazing Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 95) {
+          qualityMultiplier = 4;
+          qualityType =
+            "<h9 style='color:lime; font-size:16px;'>Very good Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 85) {
+          qualityMultiplier = 3;
+          qualityType =
+            "<h9 style='color:green; font-size:16px;'>Great Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 65) {
+          qualityMultiplier = 2;
+          qualityType =
+            "<h9 style='color:orange; font-size:16px;'>Good Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 50) {
+          qualityMultiplier = 1.5;
+          qualityType =
+            "<h9 style='color:black; font-size:16px;'>Decent Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 30) {
+          qualityMultiplier = 1;
+          qualityType =
+            "<h9 style='color:black; font-size:16px;'>Average Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 20) {
+          qualityMultiplier = 0.9;
+          qualityType =
+            "<h9 style='color:brown; font-size:16px;'>Poor Quality</h9>";
+        } else if (randomWeaponQualityNumber >= 10) {
+          qualityMultiplier = 0.5;
+          qualityType = "<h9 style='color:crimson; font-size:16px;'>Worn</h9>";
+        } else if (randomWeaponQualityNumber >= 5) {
+          qualityMultiplier = 0.25;
+          qualityType = "<h9 style='color:red; font-size:16px;'>Damaged</h9>";
+        } else if (randomWeaponQualityNumber >= 0) {
+          qualityMultiplier = 0.1;
+          qualityType = "<h9 style='color:red; font-size:16px;'>Broken</h9>";
+        }
+
+        //If statement goes through different percentages until it reaches the correct generated random single number to select a Quality for the weapon.
+        if (randomWeaponPowerTypeNumber >= 99.8) {
+          powerTypeMultiplier = 50;
+          powerType =
+            "<h9 style='color:white; font-size:16px;'>[GOD INFUSED]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 99.5) {
+          powerTypeMultiplier = 25;
+          powerType = "<h9 style='color:pink; font-size:16px;'>[BLESSED]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 98) {
+          powerTypeMultiplier = 10;
+          powerType =
+            "<h9 style='color:purple; font-size:16px;'>[ULTIMATE]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 90) {
+          powerTypeMultiplier = 5;
+          powerType = "<h9 style='color:yellow; font-size:16px;'>[ELITE]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 80) {
+          powerTypeMultiplier = 4;
+          powerType =
+            "<h9 style='color:lime; font-size:16px;'>[ULTRA STRONG]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 70) {
+          powerTypeMultiplier = 3;
+          powerType = "<h9 style='color:green; font-size:16px;'>[STRONG]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 50) {
+          powerTypeMultiplier = 2;
+          powerType = "<h9 style='color:orange; font-size:16px;'>[TOUGH]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 10) {
+          powerTypeMultiplier = 1;
+          powerType = "<h9 style='color:black; font-size:16px;'>[NORMAL]</h9>";
+        } else if (randomWeaponPowerTypeNumber >= 0) {
+          powerTypeMultiplier = 0.5;
+          powerType = "<h9 style='color:red; font-size:16px;'>[WEAK]</h9>";
+        }
+
+        if (currentWeaponType === "Dual Pistols") {
+          basePower = objWeapons.DualPistolsBasePower;
+          killMultiplier = objWeapons.DualPistolsBaseKillMultiplier;
+          sprite = dualPistolSprite;
+        } else if (currentWeaponType === "Tomato Launcher") {
+          basePower = objWeapons.TomatoLauncherBasePower;
+          killMultiplier = objWeapons.TomatoLauncherBaseKillMultiplier;
+          sprite = tomatoLauncherSprite;
+        } else if (currentWeaponType === "Odango") {
+          basePower = objWeapons.OdangoBasePower;
+          killMultiplier = objWeapons.OdangoBaseKillMultiplier;
+          sprite = odangoSprite;
+        } else if (currentWeaponType === "Wand") {
+          basePower = objWeapons.WandBasePower;
+          killMultiplier = objWeapons.WandBaseKillMultiplier;
+          sprite = wandSprite;
+        }
+
+        killMultiplier =
+          killMultiplier * (1 + Math.floor(randomWeaponLevel / 50));
+        totalPower = Math.round(
+          basePower +
+            randomWeaponLevel *
+              (qualityMultiplier * materialMultiplier * powerTypeMultiplier)
+        );
+        weaponRating = totalPower * killMultiplier;
+        weaponName = `${powerType} ${qualityType} ${materialType} ${currentWeaponType} [Lv.${randomWeaponLevel}]${sprite}`;
+        let spritelessWeaponName = `${powerType} ${qualityType} ${materialType} ${currentWeaponType} [Lv.${randomWeaponLevel}]`;
+        if (character1.WeaponRating < weaponRating) {
+          character1.Weapon = weaponName;
+          character1.WeaponDamage = totalPower;
+          character1.WeaponKillMult = killMultiplier;
+          character1.WeaponRating = weaponRating;
+          currentEnemyWeaponDrop = ` The enemy dropped a ${spritelessWeaponName} with ${weaponRating} Weapon Rating. ${character1.FirstName} equips it!`;
+        } else if (character1.WeaponRating >= weaponRating) {
+          currentEnemyWeaponDrop = ` The enemy dropped a ${spritelessWeaponName} with ${weaponRating} Weapon Rating. ${character1.FirstName} decides not to equip it as it is weaker than their currently equipped weapon.`;
+        }
+      }
+
+      function shopGen() {
+        //Sells ores in the shop, which removes it from the inventory and adds the value of the item to the characters money. Also logs it as an event.
+        while (character1.Inventory.length > 0) {
+          if (character1.Inventory[0] === "Rock") {
+            events.push(
+              `${character1.FirstName} sold ${character1.Inventory[0]} for ${
+                2 * character1.MineLevel
+              } money.`
+            );
+            character1.Money = character1.Money + 2 * character1.MineLevel;
+            character1.Inventory.splice(0, 1);
+          } else if (character1.Inventory[0] === "Coal") {
+            events.push(
+              `${character1.FirstName} sold ${character1.Inventory[0]} for ${
+                4 * character1.MineLevel
+              } money.`
+            );
+            character1.Money = character1.Money + 4 * character1.MineLevel;
+            character1.Inventory.splice(0, 1);
+          } else if (character1.Inventory[0] === "Copper") {
+            events.push(
+              `${character1.FirstName} sold ${character1.Inventory[0]} for ${
+                8 * character1.MineLevel
+              } money.`
+            );
+            character1.Money = character1.Money + 8 * character1.MineLevel;
+            character1.Inventory.splice(0, 1);
+          } else if (character1.Inventory[0] === "Iron") {
+            events.push(
+              `${character1.FirstName} sold ${character1.Inventory[0]} for ${
+                16 * character1.MineLevel
+              } money.`
+            );
+            character1.Money = character1.Money + 16 * character1.MineLevel;
+            character1.Inventory.splice(0, 1);
+          } else if (character1.Inventory[0] === "Titanium") {
+            events.push(
+              `${character1.FirstName} sold ${character1.Inventory[0]} for ${
+                32 * character1.MineLevel
+              } money.`
+            );
+            character1.Money = character1.Money + 32 * character1.MineLevel;
+            character1.Inventory.splice(0, 1);
+          }
+          //Sells drops in the shop, which removes it from the inventory and adds the value of the item to the characters money. Also logs it as an event.
+          if (
+            character1.Inventory[0].includes("[TRASH]") &&
+            character1.Inventory[0] !== undefined
+          ) {
+            events.push(
+              `${character1.FirstName} sold ${
+                character1.Inventory[0]
+              } for ${Math.round(1 * character1.multSellDrops)} money.`
+            );
+            character1.Money = Math.round(
+              character1.Money + 1 * character1.multSellDrops
+            );
+            character1.Inventory.splice(0, 1);
+          } else {
+            character1.Inventory.splice(0, 1);
+          }
+        }
+        //Buying items
+        //Buys new pickaxe based on what the current pickaxe is and how much money the character has.
+        if (
+          character1.Pickaxe === `Stone Pickaxe ${t1PickImg}` &&
+          character1.Money >= character1.PickaxeCost
+        ) {
+          character1.Pickaxe = `Copper Pickaxe ${copperPickImg}`;
+          character1.Money = character1.Money - character1.PickaxeCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Pickaxe} for ${character1.PickaxeCost} money.`
+          );
+          character1.PickaxeCost = character1.PickaxeCost * 2;
+        } else if (
+          character1.Pickaxe === `Copper Pickaxe ${copperPickImg}` &&
+          character1.Money >= character1.PickaxeCost
+        ) {
+          character1.Pickaxe = `Iron Pickaxe ${t2PickImg}`;
+          character1.Money = character1.Money - character1.PickaxeCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Pickaxe} for ${character1.PickaxeCost} money.`
+          );
+          character1.PickaxeCost = character1.PickaxeCost * 2;
+        } else if (
+          character1.Pickaxe === `Iron Pickaxe ${t2PickImg}` &&
+          character1.Money >= character1.PickaxeCost
+        ) {
+          character1.Pickaxe = `Titanium Pickaxe ${t4PickImg}`;
+          character1.Money = character1.Money - character1.PickaxeCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Pickaxe} for ${character1.PickaxeCost} money.`
+          );
+          character1.PickaxeCost = character1.PickaxeCost * 2;
+        } else if (
+          character1.Pickaxe === `Titanium Pickaxe ${t4PickImg}` &&
+          character1.Money >= character1.PickaxeCost
+        ) {
+          character1.Pickaxe = `Gold Pickaxe ${goldPickImg}`;
+          character1.Money = character1.Money - character1.PickaxeCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Pickaxe} for ${character1.PickaxeCost} money.`
+          );
+          character1.PickaxeCost = character1.PickaxeCost * 2;
+        }
+        //Updates currently unexisting pickaxes
+        if (character1.Pickaxe === `Steel Pickaxe ${t2PickImg}`) {
+          character1.Pickaxe = `Stone Pickaxe ${t1PickImg}`;
+          character1.PickaxeCost = 100;
+        }
+        //Buys new key based on what the current key is and how much money the character has.
+        if (
+          character1.Key === "None" &&
+          character1.Money >= character1.KeyCost
+        ) {
+          character1.Key = objDungeonWcDonalds.Key;
+          character1.Money = character1.Money - character1.KeyCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Key} for ${character1.KeyCost} money.`
+          );
+          character1.KeyCost = character1.KeyCost * 10;
+        }
+        if (
+          character1.Key === objDungeonWcDonalds.Key &&
+          character1.Money >= character1.KeyCost
+        ) {
+          character1.Key = objDungeonRumRaisinFactory.Key;
+          character1.Money = character1.Money - character1.KeyCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Key} for ${character1.KeyCost} money.`
+          );
+          character1.KeyCost = character1.KeyCost * 10;
+        }
+        if (
+          character1.Key === "Factory Key" ||
+          (character1.Key === objDungeonRumRaisinFactory.Key &&
+            character1.Money >= character1.KeyCost)
+        ) {
+          character1.Key = objDungeonBeach.Key;
+          character1.Money = character1.Money - character1.KeyCost;
+          events.push(
+            `${character1.FirstName} bought ${character1.Key} for ${character1.KeyCost} money.`
+          );
+          character1.KeyCost = character1.KeyCost * 10;
+        }
+        character1.Location = `Store ${storeImg}`;
+      }
+      function spellGenMining() {
+        mineSpellRecursionCheck = "yes";
+        //Resets any left over ore additions from spells.
+        spellOreMineAdd = 0;
+        //If the class is witch decide if they cast a fighting spell
+        if (character1.Class === "Witch") {
+          let castingComplete = "no";
+          while (castingComplete === "no") {
+            let miningSpellUncommonDecider = Math.floor(Math.random() * 100);
+            let miningSpellRareDecider = Math.floor(Math.random() * 1000);
+            let miningSpellSuperRareDecider = Math.floor(Math.random() * 10000);
+            let randomUncommonSpell;
+            let randomRareSpell;
+            let randomSuperRareSpell;
+            let uncommonSpellName;
+            let rareSpellName;
+            let superRareSpellName;
+
+            if (miningSpellUncommonDecider === 1) {
+              let spellCastEvent;
+              randomUncommonSpell =
+                uncommonMiningSpells[
+                  Math.floor(Math.random() * uncommonMiningSpells.length)
+                ];
+              spellOreMineAdd = spellOreMineAdd + 9;
+              if (randomUncommonSpell === "MiruPickaxe") {
+                uncommonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Mirukurun Pickaxe! (Chinatsu ver.)</h9>";
+
+                spellCastEvent = `${character1.FirstName} casts ${uncommonSpellName}. They instantly mine ${spellOreMineAdd} ores.`;
+              }
+              events.push(spellCastEvent);
+            }
+            if (miningSpellRareDecider === 1) {
+              let spellCastEvent;
+              randomRareSpell =
+                rareMiningSpells[
+                  Math.floor(Math.random() * rareMiningSpells.length)
+                ];
+              if (
+                randomRareSpell === "MiruSuperPickaxe" &&
+                character1.Level >= 10
+              ) {
+                rareSpellName =
+                  "<h9 style='color:#E39FF6; font-size:16px;'>Mirukurun Super Pickaxe! (Chinatsu ver.)</h9>";
+                spellOreMineAdd = spellOreMineAdd + 99;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. They instantly mine ${spellOreMineAdd} ores.`;
+              }
+              events.push(`${spellCastEvent}`);
+            }
+            if (miningSpellSuperRareDecider === 1) {
+              let spellCastEvent;
+              randomSuperRareSpell =
+                superRareMiningSpells[
+                  Math.floor(Math.random() * superRareMiningSpells.length)
+                ];
+              if (
+                randomSuperRareSpell === "MiruMegaPickaxe" &&
+                character1.Level >= 100
+              ) {
+                superRareSpellName =
+                  "<h9 style='color:#f2c2ff; font-size:16px;'>Mirukurun Mega Pickaxe! (Chinatsu ver.)</h9>";
+                spellOreMineAdd = spellOreMineAdd + 999;
+                spellCastEvent = `${character1.FirstName} casts ${superRareSpellName}. They instantly mine ${spellOreMineAdd} ores.`;
+              }
+              events.push(`${spellCastEvent}`);
+            }
+            //If no spells were cast then end the loop.
+            if (
+              miningSpellUncommonDecider != 1 &&
+              miningSpellRareDecider != 1 &&
+              miningSpellSuperRareDecider != 1
+            ) {
+              castingComplete = "yes";
+            }
+          }
+          let totalOreLeft = spellOreMineAdd;
+          while (totalOreLeft > 0) {
+            //If a character is mining they will go to the endless mine and mine the highest level thing they can with their current pickaxe. Mined ore will be added to the inventory.
+            mineGen();
+            events.push(`${character1.FirstName} mined ${currentOre}.`);
+            totalOreLeft = totalOreLeft - 1;
+          }
+        }
+      }
+      function spellGen() {
+        //If the class is witch decide if they cast a fighting spell
+        if (character1.Class === "Witch") {
+          let castingComplete = "no";
+          while (castingComplete === "no") {
+            let fightingSpellCommonDecider = Math.floor(Math.random() * 10);
+            let fightingSpellUncommonDecider = Math.floor(Math.random() * 50);
+            let fightingSpellRareDecider = Math.floor(Math.random() * 100);
+            let fightingSpellSuperRareDecider = Math.floor(
+              Math.random() * 1000
+            );
+            let randomCommonSpell;
+            let randomUncommonSpell;
+            let randomRareSpell;
+            let commonSpellName;
+            let uncommonSpellName;
+            let rareSpellName;
+
+            if (fightingSpellCommonDecider === 1) {
+              let spellCastEvent;
+              let availableSpell = "no";
+              while (availableSpell === "no") {
+                randomCommonSpell =
+                  commonFightingSpells[
+                    Math.floor(Math.random() * commonFightingSpells.length)
+                  ];
+                if (randomCommonSpell === "MiruHammer") {
+                  availableSpell = "yes";
+                } else if (
+                  randomCommonSpell === "MiruDecoy" &&
+                  character1.Level > 10
+                ) {
+                  availableSpell = "yes";
+                }
+              }
+              if (randomCommonSpell === "MiruHammer" && character1.Level < 10) {
+                commonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Finishing move, Mirakurun hammer! (Chinatsu ver. Part I)</h9>";
+                spellPowMult = spellPowMult * 2;
+                spellCastEvent = `${character1.FirstName} casts ${commonSpellName}. Their spell power multiplier is now ${spellPowMult}.`;
+              } else if (
+                randomCommonSpell === "MiruHammer" &&
+                character1.Level < 100
+              ) {
+                commonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Finishing move, Mirakurun hammer! (Chinatsu ver. Part II)</h9>";
+                spellPowMult = spellPowMult * 4;
+                spellCastEvent = `${character1.FirstName} casts ${commonSpellName}. Their spell power multiplier is now ${spellPowMult}.`;
+              } else if (
+                randomCommonSpell === "MiruHammer" &&
+                character1.Level >= 100
+              ) {
+                commonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Finishing move, Mirakurun hammer! (Chinatsu ver. Part III)</h9>";
+                spellPowMult = spellPowMult * 8;
+                spellCastEvent = `${character1.FirstName} casts ${commonSpellName}. Their spell power multiplier is now ${spellPowMult}.`;
+              }
+              if (randomCommonSpell === "MiruDecoy" && character1.Level >= 10) {
+                commonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Mirukurun Magic Decoy! (Chinatsu ver.)</h9>";
+                spellPowReductionMult = spellPowReductionMult * 0.5;
+                spellCastEvent = `${character1.FirstName} casts ${commonSpellName}. Their spell enemy power reduction multiplier is now ${spellPowReductionMult}.`;
+              }
+              events.push(spellCastEvent);
+            }
+            if (fightingSpellUncommonDecider === 1) {
+              let spellCastEvent;
+              randomUncommonSpell =
+                uncommonFightingSpells[
+                  Math.floor(Math.random() * uncommonFightingSpells.length)
+                ];
+              if (
+                randomUncommonSpell === "MiruXPGain" &&
+                character1.Level < 10
+              ) {
+                uncommonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Mirakurun XP Gain! (Chinatsu ver. Part I)</h9>";
+                currentXPEarningMultiplier = currentXPEarningMultiplier + 10;
+                spellCastEvent = `${character1.FirstName} casts ${uncommonSpellName}. Her XP earning multiplier increased by 10 for her next encounter.`;
+              } else if (
+                randomUncommonSpell === "MiruXPGain" &&
+                character1.Level < 100
+              ) {
+                uncommonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Mirakurun XP Gain! (Chinatsu ver. Part II)</h9>";
+                currentXPEarningMultiplier = currentXPEarningMultiplier + 20;
+                spellCastEvent = `${character1.FirstName} casts ${uncommonSpellName}. Her XP earning multiplier increased by 20 for her next encounter.`;
+              } else if (
+                randomUncommonSpell === "MiruXPGain" &&
+                character1.Level >= 100
+              ) {
+                uncommonSpellName =
+                  "<h9 style='color:#C8A2C8; font-size:16px;'>Mirakurun XP Gain! (Chinatsu ver. Part III)</h9>";
+                currentXPEarningMultiplier = currentXPEarningMultiplier + 30;
+                spellCastEvent = `${character1.FirstName} casts ${uncommonSpellName}. Her XP earning multiplier increased by 30 for her next encounter.`;
+              }
+              events.push(spellCastEvent);
+            }
+            if (fightingSpellRareDecider === 1) {
+              let spellCastEvent;
+              randomRareSpell =
+                rareFightingSpells[
+                  Math.floor(Math.random() * rareFightingSpells.length)
+                ];
+              if (
+                randomRareSpell === "MiruSuperHammer" &&
+                character1.Level < 10
+              ) {
+                rareSpellName =
+                  "<h9 style='color:#E39FF6; font-size:16px;'>Mirukurun Super Hammer! (Chinatsu ver. Part I)</h9>";
+                spellKillMult = spellKillMult * 2;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              } else if (
+                randomRareSpell === "MiruSuperHammer" &&
+                character1.Level < 100
+              ) {
+                rareSpellName =
+                  "<h9 style='color:#E39FF6; font-size:16px;'>Mirukurun Super Hammer! (Chinatsu ver. Part II)</h9>";
+                spellKillMult = spellKillMult * 4;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              } else if (
+                randomRareSpell === "MiruSuperHammer" &&
+                character1.Level >= 100
+              ) {
+                rareSpellName =
+                  "<h9 style='color:#E39FF6; font-size:16px;'>Mirukurun Super Hammer! (Chinatsu ver. Part III)</h9>";
+                spellKillMult = spellKillMult * 8;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              }
+              events.push(`${spellCastEvent}`);
+            }
+            if (fightingSpellSuperRareDecider === 1) {
+              let spellCastEvent;
+              randomSuperRareSpell =
+                superRareFightingSpells[
+                  Math.floor(Math.random() * superRareFightingSpells.length)
+                ];
+              if (
+                randomSuperRareSpell === "MiruSuperNuke" &&
+                character1.Level < 10
+              ) {
+                rareSpellName =
+                  "<h9 style='color:white; font-size:16px;'>Mirukurun Super Nuke! (Chinatsu ver. Part I)</h9>";
+                spellKillMult = spellKillMult * 50;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              } else if (
+                randomSuperRareSpell === "MiruSuperNuke" &&
+                character1.Level < 100
+              ) {
+                rareSpellName =
+                  "<h9 style='color:white; font-size:16px;'>Mirukurun Super Nuke! (Chinatsu ver. Part II)</h9>";
+                spellKillMult = spellKillMult * 100;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              } else if (
+                randomSuperRareSpell === "MiruSuperNuke" &&
+                character1.Level >= 100
+              ) {
+                rareSpellName =
+                  "<h9 style='color:white; font-size:16px;'>Mirukurun Super Nuke! (Chinatsu ver. Part III)</h9>";
+                spellKillMult = spellKillMult * 200;
+                spellCastEvent = `${character1.FirstName} casts ${rareSpellName}. Their spell kill multiplier is now ${spellKillMult}.`;
+              }
+              events.push(`${spellCastEvent}`);
+            }
+            //If no spells were cast then end the loop.
+            if (
+              fightingSpellCommonDecider != 1 &&
+              fightingSpellRareDecider != 1
+            ) {
+              castingComplete = "yes";
+            }
+          }
+        }
+      }
+
+      function enemyGen() {
+        currentAntiBullyEvent = "";
+        currentRangerDebuff = "";
+        currentCharacter1Power = character1.Power + character1.WeaponDamage;
+
+        //Generates the enemy to be defeated and the money earned from it
+        let classExistanceCheck = "no";
+        while (classExistanceCheck === "no") {
+          let enemyClassRand =
+            dungeonMonsterTypes.MonsterClasses[
+              Math.floor(
+                Math.random() * dungeonMonsterTypes.MonsterClasses.length
+              )
+            ];
+          let enemyPool;
+          currentEnemyLevel = Math.floor(
+            Math.random() * (character1.Level + 2) + 1
+          );
+          if (enemyClassRand === "Weak") {
+            enemyPool = currentDungeon.Weak;
+            currentEnemyPower = Math.round(
+              dungeonMonsterTypes.WeakBasePower *
+                currentDungeon.MonsterPowerMultiplier *
+                (currentEnemyLevel * 0.75)
+            );
+            currentXPEarning = Math.round(
+              dungeonMonsterTypes.WeakBaseXP *
+                currentDungeon.MonsterXPMultiplier *
+                (currentEnemyLevel * 0.5)
+            );
+          } else if (enemyClassRand === "Normal") {
+            enemyPool = currentDungeon.Normal;
+            currentEnemyPower = Math.round(
+              dungeonMonsterTypes.NormalBasePower *
+                currentDungeon.MonsterPowerMultiplier *
+                (currentEnemyLevel * 0.75)
+            );
+            currentXPEarning = Math.round(
+              dungeonMonsterTypes.NormalBaseXP *
+                currentDungeon.MonsterXPMultiplier *
+                (currentEnemyLevel * 0.5)
+            );
+          } else if (enemyClassRand === "Tough") {
+            enemyPool = currentDungeon.Tough;
+            currentEnemyPower = Math.round(
+              dungeonMonsterTypes.ToughBasePower *
+                currentDungeon.MonsterPowerMultiplier *
+                (currentEnemyLevel * 0.75)
+            );
+            currentXPEarning = Math.round(
+              dungeonMonsterTypes.ToughBaseXP *
+                currentDungeon.MonsterXPMultiplier *
+                (currentEnemyLevel * 0.5)
+            );
+          } else if (enemyClassRand === "Elite") {
+            enemyPool = currentDungeon.Elite;
+            currentEnemyPower = Math.round(
+              dungeonMonsterTypes.EliteBasePower *
+                currentDungeon.MonsterPowerMultiplier *
+                (currentEnemyLevel * 0.75)
+            );
+            currentXPEarning = Math.round(
+              dungeonMonsterTypes.EliteBaseXP *
+                currentDungeon.MonsterXPMultiplier *
+                (currentEnemyLevel * 0.5)
+            );
+          } else if (enemyClassRand === "Boss") {
+            enemyPool = currentDungeon.Boss;
+            currentEnemyPower = Math.round(
+              dungeonMonsterTypes.BossBasePower *
+                currentDungeon.MonsterPowerMultiplier *
+                currentEnemyLevel
+            );
+            currentXPEarning = Math.round(
+              dungeonMonsterTypes.BossBaseXP *
+                currentDungeon.MonsterXPMultiplier *
+                (currentEnemyLevel * 0.5)
+            );
+          }
+          enemyRand = enemyPool[Math.floor(Math.random() * enemyPool.length)];
+
+          if (enemyRand !== "None") {
+            classExistanceCheck = "yes";
+          }
+        }
+
+        //If it decides to make an enemy a bully it will provide it with the appropriate tag.
+        let bullyTag = "";
+        let bullyTags = [
+          "<h9 style='color:Crimson; font-size:16px;'>[Bully]</h9> ",
+          "<h9 style='color:Crimson; font-size:16px;'>[Big Bully]</h9> ",
+        ];
+        let bullyRand = Math.floor(Math.random() * 1000);
+        let bullyMoneyMult;
+        let bullyXPMult;
+        let bullyPowMult;
+        if (bullyRand <= 40) {
+          bullyTag = "<h9 style='color:Crimson; font-size:16px;'>[Bully]</h9>";
+        } else if (bullyRand <= 50) {
+          bullyTag =
+            "<h9 style='color:Crimson; font-size:16px;'>[Big Bully]</h9>";
+        } else if (bullyRand <= 55) {
+          bullyTag =
+            "<h9 style='color:Red; font-size:16px;'>[Super Bully]</h9>";
+        } else if (bullyRand > 55) {
+          bullyTag = "";
+        }
+        if (bullyTag.includes("[Bully]")) {
+          bullyPowMult = 2;
+          currentEnemyPower = currentEnemyPower * bullyPowMult;
+          bullyMoneyMult = 4;
+          bullyXPMult = 4;
+        }
+        if (bullyTag.includes("[Big Bully]")) {
+          bullyPowMult = 4;
+          currentEnemyPower = currentEnemyPower * bullyPowMult;
+          bullyMoneyMult = 8;
+          bullyXPMult = 8;
+        }
+        if (bullyTag.includes("[Super Bully]")) {
+          bullyPowMult = 8;
+          currentEnemyPower = currentEnemyPower * bullyPowMult;
+          bullyMoneyMult = 16;
+          bullyXPMult = 16;
+        }
+        enemyName = `${bullyTag}${enemyRand}`;
+        //If the characters class is tomato they have a chance of dropping rum raisin.
+        if (character1.Class === "Tomato") {
+          let rumRaisinSmallDropDecider = Math.floor(Math.random() * 15);
+          let rumRaisinMediumDropDecider = Math.floor(Math.random() * 50);
+          let rumRaisinLargeDropDecider = Math.floor(Math.random() * 100);
+          if (
+            rumRaisinSmallDropDecider === 1 &&
+            character1.Power >= currentEnemyPower
+          ) {
+            character1.Power = character1.Power + currentEnemyLevel;
+            currentEnemyRumRaisinDrop = ` <h9 style='color:purple; font-size:16px;'>The enemy dropped a [Small] Rum Raisin.</h9> ${character1.FirstName} eats it and gains ${currentEnemyLevel} power.`;
+          } else if (
+            rumRaisinMediumDropDecider === 1 &&
+            character1.Power >= currentEnemyPower &&
+            character1.Level >= 10
+          ) {
+            character1.Power = character1.Power + currentEnemyLevel * 2;
+            currentEnemyRumRaisinDrop = ` <h9 style='color:purple; font-size:16px;'>The enemy dropped a [Medium] Rum Raisin.</h9> ${
+              character1.FirstName
+            } eats it and gains ${currentEnemyLevel * 2} power.`;
+          } else if (
+            rumRaisinLargeDropDecider === 1 &&
+            character1.Power >= currentEnemyPower &&
+            character1.Level >= 100
+          ) {
+            character1.Power = character1.Power + currentEnemyLevel * 4;
+            currentEnemyRumRaisinDrop = ` <h9 style='color:purple; font-size:16px;'>The enemy dropped a [Large] Rum Raisin.</h9> ${
+              character1.FirstName
+            } eats it and gains ${currentEnemyLevel * 4} power.`;
+          } else {
+            currentEnemyRumRaisinDrop = "";
+          }
+        } else if (character1.Class != "Tomato") {
+          currentEnemyRumRaisinDrop = "";
+        }
+        //Random number to determine whether an enemy will give a drop
+        let dropDecider = Math.floor(Math.random() * 10);
+        //If the enemy drops something it adds it to the inventory and adds the log to the main log
+        if (dropDecider > 5 && character1.Power >= currentEnemyPower) {
+          let dropRand =
+            currentDungeon.MonsterDrops[
+              Math.floor(Math.random() * currentDungeon.MonsterDrops.length)
+            ];
+          currentEnemyDrop = ` They get ${dropRand}.`;
+          character1.Inventory.push(dropRand);
+        } else {
+          currentEnemyDrop = "";
+          currentEnemyWeaponDrop = "";
+        }
+        if (dropDecider === 9 && character1.Power >= currentEnemyPower) {
+          weaponGen();
+        } else {
+          currentEnemyWeaponDrop = "";
+        }
+        //Multiplies total XP earned by the characters XP multiplier and the spell multiplier.
+        currentXPEarning = Math.floor(currentXPEarning * character1.XPMult);
+        currentXPEarning = Math.floor(
+          currentXPEarning * currentXPEarningMultiplier
+        );
+        //If class is ranger roll a number between one and twenty to decide whether the debuff is applied. If it is take away the rangers XP and give it to another random character.
+        if (character1.Class === "Ranger") {
+          //Rangers anti-bully ability. Double damage against bully enemies and has a little event to doo with them, providing more XP and some money.
+          if (bullyTag.includes("Bully")) {
+            let randomBullyVictim =
+              bullyVictims[Math.floor(Math.random() * bullyVictims.length)];
+            currentCharacter1Power =
+              currentCharacter1Power * (bullyPowMult * 2);
+            currentMoneyEarning = currentEnemyLevel * bullyMoneyMult;
+            currentXPEarning = currentXPEarning * bullyXPMult;
+            if (character1.Level >= 50) {
+              currentMoneyEarning =
+                currentMoneyEarning * Math.floor(character1.Level / 50);
+              currentXPEarning =
+                currentXPEarning * Math.floor(character1.Level / 50);
+            }
+            currentAntiBullyEvent = ` <h9 style='color:#99EDC3; font-size:16px;'>${character1.FirstName} rescued ${randomBullyVictim} from being bullied by the enemy and got rewarded with ${currentMoneyEarning} money.</h9>`;
+            character1.Money = character1.Money + currentMoneyEarning;
+          } else {
+            currentAntiBullyEvent = "";
+          }
+          let rangerDebuffDecider = Math.floor(Math.random() * 3);
+          if (
+            rangerDebuffDecider === 1 &&
+            character1.Power >= currentEnemyPower
+          ) {
+            currentCharacter2XPEarning = currentXPEarning;
+            currentRangerDebuff = ` <h9 style='color:red; font-size:16px;'>${character1.FirstName} lost her presence to ${character2.FirstName}!</h9> ${character2.FirstName} gains the ${currentCharacter2XPEarning}XP she earned.`;
+            character2.XP = character2.XP + currentCharacter2XPEarning;
+            currentXPEarning = 0;
+          } else {
+            currentRangerDebuff = "";
+          }
+        }
+
+        //Multiplies spell multipliers
+        currentEnemyPower = Math.round(
+          currentEnemyPower * spellPowReductionMult
+        );
+        currentCharacter1Power = Math.round(
+          currentCharacter1Power * spellPowMult
+        );
+        //Resets spell multipliers
+        spellKillMult = 1;
+        spellPowMult = 1;
+        spellPowReductionMult = 1;
+        currentXPEarningMultiplier = 1;
+      }
+
+      function generateActivity() {
+        //Generates a new activity for the characters
+        let activityRand1 =
+          activities[Math.floor(Math.random() * activities.length)];
+        let activityRand2 =
+          activities[Math.floor(Math.random() * activities.length)];
+        let activityRand3 =
+          activities[Math.floor(Math.random() * activities.length)];
+        let activityRand4 =
+          activities[Math.floor(Math.random() * activities.length)];
+        objCharacterYui.Activity = activityRand1;
+        objCharacterKyoko.Activity = activityRand2;
+        objCharacterAkari.Activity = activityRand3;
+        objCharacterChinatsu.Activity = activityRand4;
+      }
+
+      function generateEvent() {
+        let charactersRand =
+          characters[Math.floor(Math.random() * characters.length)];
+        let charactersRand2;
+        if (charactersRand === "Yui") {
+          character1 = objCharacterYui;
+        } else if (charactersRand === "Kyoko") {
+          character1 = objCharacterKyoko;
+        } else if (charactersRand === "Akari") {
+          character1 = objCharacterAkari;
+        } else if (charactersRand === "Chinatsu") {
+          character1 = objCharacterChinatsu;
+        }
+        //Chooses as 2nd character and checks that the 2nd character isn't the same as the first
+        let sameCharacterCheck;
+        while (sameCharacterCheck != 0) {
+          charactersRand2 =
+            characters[Math.floor(Math.random() * characters.length)];
+          if (charactersRand2 === "Yui") {
+            character2 = objCharacterYui;
+          } else if (charactersRand2 === "Kyoko") {
+            character2 = objCharacterKyoko;
+          } else if (charactersRand2 === "Akari") {
+            character2 = objCharacterAkari;
+          } else if (charactersRand2 === "Chinatsu") {
+            character2 = objCharacterChinatsu;
+          }
+
+          if (character2.FirstName === character1.FirstName) {
+            sameCharacterCheck = 1;
+          } else {
+            sameCharacterCheck = 0;
+          }
+        }
+        //If a character has a fighting event it will run the functions required and change the characters location to the correct dungeon. They will then fight an enemy. If their power is good enough they will kill it.
+        if (character1.Activity === "Fighting") {
+          spellGen();
+          let enemyAmountText;
+          let character1KillMultiplier =
+            character1.WeaponKillMult * spellKillMult;
+          let amountKilled =
+            Math.floor(Math.random() * character1KillMultiplier) + 1;
+          if (amountKilled === 1) {
+            enemyAmountText = "a";
+          } else if (amountKilled >= 2 && amountKilled < 4) {
+            enemyAmountText = `a team of ${amountKilled}`;
+          } else if (amountKilled >= 4 && amountKilled < 10) {
+            enemyAmountText = `a squad of ${amountKilled}`;
+          } else if (amountKilled >= 10 && amountKilled < 50) {
+            enemyAmountText = `a platoon of ${amountKilled}`;
+          } else if (amountKilled >= 50) {
+            enemyAmountText = `an army of ${amountKilled}`;
+          }
+          dungeonGen();
+          enemyGen();
+          let totalEnemyXPEarning = Math.round(
+            currentXPEarning * character1KillMultiplier
+          );
+          character1.Location === currentDungeon;
+          if (currentCharacter1Power >= currentEnemyPower) {
+            events.push(
+              `${character1.FirstName} (${currentCharacter1Power}) defeated ${enemyAmountText} Level ${currentEnemyLevel} ${enemyName} (${currentEnemyPower}) receiving ${totalEnemyXPEarning}XP.${currentEnemyDrop}${currentEnemyWeaponDrop}${currentEnemyRumRaisinDrop}${currentRangerDebuff}${currentAntiBullyEvent}`
+            );
+            character1.XP = character1.XP + totalEnemyXPEarning;
+            character1.EnemiesDefeated =
+              character1.EnemiesDefeated + amountKilled;
+          } else {
+            events.push(
+              `${
+                character1.FirstName
+              } (${currentCharacter1Power}) failed to defeat ${enemyAmountText} Level ${currentEnemyLevel} ${enemyName} (${currentEnemyPower}) and gained ${Math.round(
+                1 * character1.XPMult
+              )}XP.`
+            );
+            character1.XP = Math.round(character1.XP + 1 * character1.XPMult);
+            character1.FailedDefeats = character1.FailedDefeats + amountKilled;
+          }
+          character1KillMultiplier = character1KillMultiplier - 1;
+        } else if (character1.Activity === "Mining") {
+          //If a character is mining they will go to the endless mine and mine the highest level thing they can with their current pickaxe. Mined ore will be added to the inventory.
+          mineGen();
+          events.push(`${character1.FirstName} mined ${currentOre}.`);
+          mineSpellRecursionCheck = "no";
+        } else if (character1.Activity === "Shopping") {
+          shopGen();
+          if (
+            character1.Money < character1.PickaxeCost &&
+            character1.Money < character1.KeyCost &&
+            character1.Inventory.length === 0
+          ) {
+            let activityRand1 =
+              activities[Math.floor(Math.random() * activities.length)];
+            character1.Activity = activityRand1;
+          }
+        }
+
+        //Checks XP and if it is enough to level up it levels up the character.
+        reqXP = character1.Level * character1.Level * 10;
+        reqOre = character1.MineLevel * character1.MineLevel * 100;
+        if (character1.XP >= reqXP) {
+          character1.XP = 0;
+          character1.Level = character1.Level + 1;
+          character1.Power =
+            character1.Power +
+            Math.round(
+              (character1.BasePower *
+                (character1.Level * character1.multPowLvl)) /
+                4
+            );
+          character1.multSellDrops = 1 + character1.Level / 10;
+          events.push(
+            `<h9 style="color:lime;font-size:18px">${character1.FirstName} ${character1.Surname} leveled up to level ${character1.Level}!</h9>`
+          );
+        }
+        if (character1.MinedOre >= reqOre) {
+          character1.MineLevel = character1.MineLevel + 1;
+          events.push(
+            `<h9 style="color:#0000CD;font-size:18px">${character1.FirstName} ${character1.Surname} leveled up Mining to level ${character1.MineLevel}!</h9>`
+          );
+        }
+        let simLog = events.join(" <br> ");
+        document.getElementById("actionLog").innerHTML = simLog;
+      }
+      setInterval(function () {
+        yuiInvBR = objCharacterYui.Inventory.join("<br>");
+        kyokoInvBR = objCharacterKyoko.Inventory.join("<br>");
+        akariInvBR = objCharacterAkari.Inventory.join("<br>");
+        chinatsuInvBR = objCharacterChinatsu.Inventory.join("<br>");
+        document.getElementById("kyokoPowerTxt").innerHTML =
+          objCharacterKyoko.Power;
+        document.getElementById("yuiPowerTxt").innerHTML =
+          objCharacterYui.Power;
+        document.getElementById("akariPowerTxt").innerHTML =
+          objCharacterAkari.Power;
+        document.getElementById("chinatsuPowerTxt").innerHTML =
+          objCharacterChinatsu.Power;
+        document.getElementById("kyokoLevelTxt").innerHTML =
+          objCharacterKyoko.Level;
+        document.getElementById("yuiLevelTxt").innerHTML =
+          objCharacterYui.Level;
+        document.getElementById("akariLevelTxt").innerHTML =
+          objCharacterAkari.Level;
+        document.getElementById("chinatsuLevelTxt").innerHTML =
+          objCharacterChinatsu.Level;
+        document.getElementById("kyokoLocationTxt").innerHTML =
+          objCharacterKyoko.Location;
+        document.getElementById("yuiLocationTxt").innerHTML =
+          objCharacterYui.Location;
+        document.getElementById("akariLocationTxt").innerHTML =
+          objCharacterAkari.Location;
+        document.getElementById("chinatsuLocationTxt").innerHTML =
+          objCharacterChinatsu.Location;
+        document.getElementById("kyokoActivityTxt").innerHTML =
+          objCharacterKyoko.Activity;
+        document.getElementById("yuiActivityTxt").innerHTML =
+          objCharacterYui.Activity;
+        document.getElementById("akariActivityTxt").innerHTML =
+          objCharacterAkari.Activity;
+        document.getElementById("chinatsuActivityTxt").innerHTML =
+          objCharacterChinatsu.Activity;
+        document.getElementById("kyokoMoneyTxt").innerHTML =
+          objCharacterKyoko.Money;
+        document.getElementById("yuiMoneyTxt").innerHTML =
+          objCharacterYui.Money;
+        document.getElementById("akariMoneyTxt").innerHTML =
+          objCharacterAkari.Money;
+        document.getElementById("chinatsuMoneyTxt").innerHTML =
+          objCharacterChinatsu.Money;
+        document.getElementById("kyokoXPTxt").innerHTML = `${
+          objCharacterKyoko.XP
+        } / ${objCharacterKyoko.Level * objCharacterKyoko.Level * 10}`;
+        document.getElementById("yuiXPTxt").innerHTML = `${
+          objCharacterYui.XP
+        } / ${objCharacterYui.Level * objCharacterYui.Level * 10}`;
+        document.getElementById("akariXPTxt").innerHTML = `${
+          objCharacterAkari.XP
+        } / ${objCharacterAkari.Level * objCharacterAkari.Level * 10}`;
+        document.getElementById("chinatsuXPTxt").innerHTML = `${
+          objCharacterChinatsu.XP
+        } / ${objCharacterChinatsu.Level * objCharacterChinatsu.Level * 10}`;
+        document.getElementById("kyokoDefeatsTxt").innerHTML =
+          objCharacterKyoko.EnemiesDefeated;
+        document.getElementById("yuiDefeatsTxt").innerHTML =
+          objCharacterYui.EnemiesDefeated;
+        document.getElementById("akariDefeatsTxt").innerHTML =
+          objCharacterAkari.EnemiesDefeated;
+        document.getElementById("chinatsuDefeatsTxt").innerHTML =
+          objCharacterChinatsu.EnemiesDefeated;
+        document.getElementById("kyokoInvTxt").innerHTML = kyokoInvBR;
+        document.getElementById("yuiInvTxt").innerHTML = yuiInvBR;
+        document.getElementById("akariInvTxt").innerHTML = akariInvBR;
+        document.getElementById("chinatsuInvTxt").innerHTML = chinatsuInvBR;
+        document.getElementById("kyokoPickaxeTxt").innerHTML =
+          objCharacterKyoko.Pickaxe;
+        document.getElementById("yuiPickaxeTxt").innerHTML =
+          objCharacterYui.Pickaxe;
+        document.getElementById("akariPickaxeTxt").innerHTML =
+          objCharacterAkari.Pickaxe;
+        document.getElementById("chinatsuPickaxeTxt").innerHTML =
+          objCharacterChinatsu.Pickaxe;
+        document.getElementById("kyokoWeaponTxt").innerHTML =
+          objCharacterKyoko.Weapon;
+        document.getElementById("yuiWeaponTxt").innerHTML =
+          objCharacterYui.Weapon;
+        document.getElementById("akariWeaponTxt").innerHTML =
+          objCharacterAkari.Weapon;
+        document.getElementById("chinatsuWeaponTxt").innerHTML =
+          objCharacterChinatsu.Weapon;
+        document.getElementById("kyokoWeaponDmgTxt").innerHTML =
+          objCharacterKyoko.WeaponDamage;
+        document.getElementById("yuiWeaponDmgTxt").innerHTML =
+          objCharacterYui.WeaponDamage;
+        document.getElementById("akariWeaponDmgTxt").innerHTML =
+          objCharacterAkari.WeaponDamage;
+        document.getElementById("chinatsuWeaponDmgTxt").innerHTML =
+          objCharacterChinatsu.WeaponDamage;
+        document.getElementById("kyokoFailDefeatsTxt").innerHTML =
+          objCharacterKyoko.FailedDefeats;
+        document.getElementById("yuiFailDefeatsTxt").innerHTML =
+          objCharacterYui.FailedDefeats;
+        document.getElementById("akariFailDefeatsTxt").innerHTML =
+          objCharacterAkari.FailedDefeats;
+        document.getElementById("chinatsuFailDefeatsTxt").innerHTML =
+          objCharacterChinatsu.FailedDefeats;
+        document.getElementById("chinatsuWeaponDmgTxt").innerHTML =
+          objCharacterChinatsu.WeaponDamage;
+        document.getElementById("kyokoDunKeyTxt").innerHTML =
+          objCharacterKyoko.Key;
+        document.getElementById("yuiDunKeyTxt").innerHTML = objCharacterYui.Key;
+        document.getElementById("akariDunKeyTxt").innerHTML =
+          objCharacterAkari.Key;
+        document.getElementById("chinatsuDunKeyTxt").innerHTML =
+          objCharacterChinatsu.Key;
+        document.getElementById("kyokoNextPickaxeTxt").innerHTML =
+          objCharacterKyoko.PickaxeCost;
+        document.getElementById("yuiNextPickaxeTxt").innerHTML =
+          objCharacterYui.PickaxeCost;
+        document.getElementById("akariNextPickaxeTxt").innerHTML =
+          objCharacterAkari.PickaxeCost;
+        document.getElementById("chinatsuNextPickaxeTxt").innerHTML =
+          objCharacterChinatsu.PickaxeCost;
+        document.getElementById("kyokoNextDunKeyTxt").innerHTML =
+          objCharacterKyoko.KeyCost;
+        document.getElementById("yuiNextDunKeyTxt").innerHTML =
+          objCharacterYui.KeyCost;
+        document.getElementById("akariNextDunKeyTxt").innerHTML =
+          objCharacterAkari.KeyCost;
+        document.getElementById("chinatsuNextDunKeyTxt").innerHTML =
+          objCharacterChinatsu.KeyCost;
+        document.getElementById("kyokoOreMinedTxt").innerHTML = `${
+          objCharacterKyoko.MinedOre
+        } / ${objCharacterKyoko.MineLevel * objCharacterKyoko.MineLevel * 100}`;
+        document.getElementById("yuiOreMinedTxt").innerHTML = `${
+          objCharacterYui.MinedOre
+        } / ${objCharacterYui.MineLevel * objCharacterYui.MineLevel * 100}`;
+        document.getElementById("akariOreMinedTxt").innerHTML = `${
+          objCharacterAkari.MinedOre
+        } / ${objCharacterAkari.MineLevel * objCharacterAkari.MineLevel * 100}`;
+        document.getElementById("chinatsuOreMinedTxt").innerHTML = `${
+          objCharacterChinatsu.MinedOre
+        } / ${
+          objCharacterChinatsu.MineLevel * objCharacterChinatsu.MineLevel * 100
+        }`;
+        document.getElementById("kyokoMineLevelTxt").innerHTML =
+          objCharacterKyoko.MineLevel;
+        document.getElementById("yuiMineLevelTxt").innerHTML =
+          objCharacterYui.MineLevel;
+        document.getElementById("akariMineLevelTxt").innerHTML =
+          objCharacterAkari.MineLevel;
+        document.getElementById("chinatsuMineLevelTxt").innerHTML =
+          objCharacterChinatsu.MineLevel;
+        document.getElementById("kyokoWeaponKillMultTxt").innerHTML =
+          objCharacterKyoko.WeaponKillMult;
+        document.getElementById("yuiWeaponKillMultTxt").innerHTML =
+          objCharacterYui.WeaponKillMult;
+        document.getElementById("akariWeaponKillMultTxt").innerHTML =
+          objCharacterAkari.WeaponKillMult;
+        document.getElementById("chinatsuWeaponKillMultTxt").innerHTML =
+          objCharacterChinatsu.WeaponKillMult;
+        document.getElementById("kyokoWeaponRatingTxt").innerHTML =
+          objCharacterKyoko.WeaponRating;
+        document.getElementById("yuiWeaponRatingTxt").innerHTML =
+          objCharacterYui.WeaponRating;
+        document.getElementById("akariWeaponRatingTxt").innerHTML =
+          objCharacterAkari.WeaponRating;
+        document.getElementById("chinatsuWeaponRatingTxt").innerHTML =
+          objCharacterChinatsu.WeaponRating;
+        document.getElementById("kyokoClassTxt").innerHTML =
+          objCharacterKyoko.Class;
+        document.getElementById("yuiClassTxt").innerHTML =
+          objCharacterYui.Class;
+        document.getElementById("akariClassTxt").innerHTML =
+          objCharacterAkari.Class;
+        document.getElementById("chinatsuClassTxt").innerHTML =
+          objCharacterChinatsu.Class;
+      }, 100); //1000ms = 1 second
+      setInterval(function () {
+        generateEvent();
+      }, 1000); //1000ms = 1 second
+
+      //Shows and hides class abilities based on character level.
+      setInterval(function () {
+        if (objCharacterChinatsu.Level >= 100) {
+          spellMiruHammer3.style.display = "block";
+          spellMiruSuperHammer3.style.display = "block";
+          spellMiruMegaPickaxe1.style.display = "block";
+          spellMiruXPGain3.style.display = "block";
+          spellMiruSuperNuke3.style.display = "block";
+          spellMiruHammer2.style.display = "none";
+          spellMiruSuperHammer2.style.display = "none";
+          spellMiruXPGain2.style.display = "none";
+          spellMiruSuperNuke2.style.display = "none";
+
+          rumRaisinLarge.style.display = "block";
+        } else if (objCharacterChinatsu.Level >= 50) {
+          spellMiruSuperPickaxe1.style.display = "block";
+        } else if (objCharacterChinatsu.Level >= 10) {
+          spellMiruDecoy1.style.display = "block";
+          spellMiruHammer2.style.display = "block";
+          spellMiruSuperHammer2.style.display = "block";
+          spellMiruXPGain2.style.display = "block";
+          spellMiruSuperNuke2.style.display = "block";
+          spellMiruHammer1.style.display = "none";
+          spellMiruSuperHammer1.style.display = "none";
+          spellMiruXPGain1.style.display = "none";
+          spellMiruSuperNuke1.style.display = "none";
+
+          rumRaisinMedium.style.display = "block";
+        } else if (objCharacterChinatsu.Level >= 1) {
+          spellMiruHammer1.style.display = "block";
+          spellMiruSuperHammer1.style.display = "block";
+          spellMiruPickaxe1.style.display = "block";
+          spellMiruXPGain1.style.display = "block";
+          spellMiruSuperNuke1.style.display = "block";
+        }
+      }, 1000); //1000ms = 1 second
+
+      setInterval(function () {
+        generateActivity();
+      }, 100000); //100000ms = 100 seconds
+
+      function update() {
+        if (
+          objCharacterYui.BasePower !== 5 ||
+          objCharacterKyoko.BasePower !== 5 ||
+          objCharacterAkari.BasePower !== 5 ||
+          objCharacterChinatsu.BasePower !== 5
+        ) {
+          objCharacterYui.BasePower = 5;
+          objCharacterKyoko.BasePower = 5;
+          objCharacterAkari.BasePower = 5;
+          objCharacterChinatsu.BasePower = 5;
+        }
+        if (
+          objCharacterYui.FailedDefeats === undefined ||
+          objCharacterKyoko.FailedDefeats === undefined ||
+          objCharacterAkari.FailedDefeats === undefined ||
+          objCharacterChinatsu.FailedDefeats === undefined
+        ) {
+          objCharacterYui.FailedDefeats = 0;
+          objCharacterKyoko.FailedDefeats = 0;
+          objCharacterAkari.FailedDefeats = 0;
+          objCharacterChinatsu.FailedDefeats = 0;
+        }
+        if (
+          objCharacterYui.Key === undefined ||
+          objCharacterKyoko.Key === undefined ||
+          objCharacterAkari.Key === undefined ||
+          objCharacterChinatsu.Key === undefined
+        ) {
+          objCharacterYui.Key = "None";
+          objCharacterKyoko.Key = "None";
+          objCharacterAkari.Key = "None";
+          objCharacterChinatsu.Key = "None";
+        }
+        if (
+          objCharacterYui.KeyCost === undefined ||
+          objCharacterKyoko.KeyCost === undefined ||
+          objCharacterAkari.KeyCost === undefined ||
+          objCharacterChinatsu.KeyCost === undefined
+        ) {
+          objCharacterYui.KeyCost = 100;
+          objCharacterKyoko.KeyCost = 100;
+          objCharacterAkari.KeyCost = 100;
+          objCharacterChinatsu.KeyCost = 100;
+        }
+        if (
+          objCharacterYui.PickaxeCost === undefined ||
+          objCharacterKyoko.PickaxeCost === undefined ||
+          objCharacterAkari.PickaxeCost === undefined ||
+          objCharacterChinatsu.PickaxeCost === undefined
+        ) {
+          objCharacterYui.PickaxeCost = 50;
+          objCharacterKyoko.PickaxeCost = 50;
+          objCharacterAkari.PickaxeCost = 50;
+          objCharacterChinatsu.PickaxeCost = 50;
+        }
+        if (
+          objCharacterYui.Pickaxe === "Stone Pickaxe" ||
+          objCharacterKyoko.Pickaxe === "Stone Pickaxe" ||
+          objCharacterAkari.Pickaxe === "Stone Pickaxe" ||
+          objCharacterChinatsu.Pickaxe === "Stone Pickaxe"
+        ) {
+          objCharacterYui.Pickaxe = `Stone Pickaxe ${t1PickImg}`;
+          objCharacterKyoko.Pickaxe = `Stone Pickaxe ${t1PickImg}`;
+          objCharacterAkari.Pickaxe = `Stone Pickaxe ${t1PickImg}`;
+          objCharacterChinatsu.Pickaxe = `Stone Pickaxe ${t1PickImg}`;
+        }
+        if (
+          objCharacterYui.Pickaxe === "Iron Pickaxe" ||
+          objCharacterKyoko.Pickaxe === "Iron Pickaxe" ||
+          objCharacterAkari.Pickaxe === "Iron Pickaxe" ||
+          objCharacterChinatsu.Pickaxe === "Iron Pickaxe"
+        ) {
+          objCharacterYui.Pickaxe = `Iron Pickaxe ${t2PickImg}`;
+          objCharacterKyoko.Pickaxe = `Iron Pickaxe ${t2PickImg}`;
+          objCharacterAkari.Pickaxe = `Iron Pickaxe ${t2PickImg}`;
+          objCharacterChinatsu.Pickaxe = `Iron Pickaxe ${t2PickImg}`;
+        }
+        if (
+          objCharacterYui.Pickaxe === "Steel Pickaxe" ||
+          objCharacterKyoko.Pickaxe === "Steel Pickaxe" ||
+          objCharacterAkari.Pickaxe === "Steel Pickaxe" ||
+          objCharacterChinatsu.Pickaxe === "Steel Pickaxe"
+        ) {
+          objCharacterYui.Pickaxe = `Steel Pickaxe ${t2PickImg}`;
+          objCharacterKyoko.Pickaxe = `Steel Pickaxe ${t2PickImg}`;
+          objCharacterAkari.Pickaxe = `Steel Pickaxe ${t2PickImg}`;
+          objCharacterChinatsu.Pickaxe = `Steel Pickaxe ${t2PickImg}`;
+        }
+        if (
+          objCharacterYui.Pickaxe === "Titanium Pickaxe" ||
+          objCharacterKyoko.Pickaxe === "Titanium Pickaxe" ||
+          objCharacterAkari.Pickaxe === "Titanium Pickaxe" ||
+          objCharacterChinatsu.Pickaxe === "Titanium Pickaxe"
+        ) {
+          objCharacterYui.Pickaxe = `Titanium Pickaxe ${t4PickImg}`;
+          objCharacterKyoko.Pickaxe = `Titanium Pickaxe ${t4PickImg}`;
+          objCharacterAkari.Pickaxe = `Titanium Pickaxe ${t4PickImg}`;
+          objCharacterChinatsu.Pickaxe = `Titanium Pickaxe ${t4PickImg}`;
+        }
+        if (
+          objCharacterYui.MinedOre === undefined ||
+          objCharacterKyoko.MinedOre === undefined ||
+          objCharacterAkari.MinedOre === undefined ||
+          objCharacterChinatsu.MinedOre === undefined
+        ) {
+          objCharacterYui.MinedOre = 0;
+          objCharacterKyoko.MinedOre = 0;
+          objCharacterAkari.MinedOre = 0;
+          objCharacterChinatsu.MinedOre = 0;
+        }
+        if (
+          objCharacterYui.MineLevel === undefined ||
+          objCharacterKyoko.MineLevel === undefined ||
+          objCharacterAkari.MineLevel === undefined ||
+          objCharacterChinatsu.MineLevel === undefined
+        ) {
+          objCharacterYui.MineLevel = 1;
+          objCharacterKyoko.MineLevel = 1;
+          objCharacterAkari.MineLevel = 1;
+          objCharacterChinatsu.MineLevel = 1;
+        }
+        if (
+          objCharacterYui.WeaponRating === undefined ||
+          objCharacterKyoko.WeaponRating === undefined ||
+          objCharacterAkari.WeaponRating === undefined ||
+          objCharacterChinatsu.WeaponRating === undefined
+        ) {
+          objCharacterYui.WeaponRating = 25;
+          objCharacterKyoko.WeaponRating = 25;
+          objCharacterAkari.WeaponRating = 25;
+          objCharacterChinatsu.WeaponRating = 25;
+        }
+        if (
+          objCharacterYui.WeaponKillMult === undefined ||
+          objCharacterKyoko.WeaponKillMult === undefined ||
+          objCharacterAkari.WeaponKillMult === undefined ||
+          objCharacterChinatsu.WeaponKillMult === undefined
+        ) {
+          objCharacterYui.WeaponKillMult = 1;
+          objCharacterKyoko.WeaponKillMult = 1;
+          objCharacterAkari.WeaponKillMult = 1;
+          objCharacterChinatsu.WeaponKillMult = 1;
+        }
+        if (
+          objCharacterYui.Class === undefined ||
+          objCharacterKyoko.Class === undefined ||
+          objCharacterAkari.Class === undefined ||
+          objCharacterChinatsu.Class === undefined
+        ) {
+          objCharacterYui.Class = "Gunner";
+          objCharacterKyoko.Class = "Tomato";
+          objCharacterAkari.Class = "Ranger";
+          objCharacterChinatsu.Class = "Witch";
+        }
+        if (objCharacterAkari.Class === "Anti-bully Ranger") {
+          objCharacterAkari.Class = "Ranger";
+        }
+        if (
+          objCharacterYui.XPMult === undefined ||
+          objCharacterKyoko.XPMult === undefined ||
+          objCharacterAkari.XPMult === undefined ||
+          objCharacterChinatsu.XPMult === undefined
+        ) {
+          objCharacterYui.XPMult = 1;
+          objCharacterKyoko.XPMult = 2;
+          objCharacterAkari.XPMult = 1;
+          objCharacterChinatsu.XPMult = 1;
+        }
+        if (
+          objCharacterYui.MineAmount === undefined ||
+          objCharacterKyoko.MineAmount === undefined ||
+          objCharacterAkari.MineAmount === undefined ||
+          objCharacterChinatsu.MineAmount === undefined
+        ) {
+          objCharacterYui.MineAmount = 1;
+          objCharacterKyoko.MineAmount = 1;
+          objCharacterAkari.MineAmount = 1;
+          objCharacterChinatsu.MineAmount = 1;
+        }
+      }
+
+      function saveGame() {
+        let gameSave = {
+          Yui: objCharacterYui,
+          Kyoko: objCharacterKyoko,
+          Akari: objCharacterAkari,
+          Chinatsu: objCharacterChinatsu,
+        };
+        localStorage.setItem("gameSave", JSON.stringify(gameSave));
+        events.push(
+          `<h9 style="color:purple;font-size:20px">Game saved successfully.</h9>`
+        );
+      }
+      function loadGame() {
+        let savedGame = JSON.parse(localStorage.getItem("gameSave"));
+        if (typeof savedGame.Kyoko !== "undefined")
+          objCharacterKyoko = savedGame.Kyoko;
+        if (typeof savedGame.Yui !== "undefined")
+          objCharacterYui = savedGame.Yui;
+        if (typeof savedGame.Akari !== "undefined")
+          objCharacterAkari = savedGame.Akari;
+        if (typeof savedGame.Chinatsu !== "undefined")
+          objCharacterChinatsu = savedGame.Chinatsu;
+        update();
+        events.push(
+          `<h9 style="color:pink;font-size:20px">Save loaded successfully.</h9>`
+        );
+      }
+    </script>
+  </body>
+</html>

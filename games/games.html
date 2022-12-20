@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YuiHub</title>
+    <link rel="icon" href="../images/logo/logo.webp">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/theme.css">
+  </head>
+  <body class="bg-dark">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-purple border-bottom border-secondary">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="../index.html">
+                  <img src="../images/logo/logo.webp" alt="Logo" height="24" class="d-inline-block align-text-top">
+                  YuiHub
+              </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="../index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Games</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    About
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../about/characters.html">Characters</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="../about/us.html">About Us</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </nav>
+    </header>
+    <main class="my-5">
+      <div class="container">
+        <div class="row">
+            <div class="col my-3">
+                <h1 class="text-purple">Choose a category.</h1>
+                <p class="mt-4 text-light">There are multiple categories of games on this site. These are seperated in order to differentiate the older games with lower quality and worse device compatibility from any newer games made on this site, which will hopefully be improved somewhat.</p>
+                <img src="../images/characters/yui_kyoko/calendar_gaming.jpg" alt="yui" class="img-fluid img-thumbnail bg-purple">
+            </div>
+            <div class="col-md-3 my-3">
+                <div class="card h-100 bg-purple">
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title">New</h5>
+                      <p class="card-text">Fresh games created on this site with hopefully much better looking UI and device compatibility. None are currently available though.</p>
+                      <button class="btn btn-dark btn-lg mt-auto" role="button" disabled>Coming soon...</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 my-3">
+                <div class="card h-100 bg-purple">
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title">Old</h5>
+                      <p class="card-text">Games from the old website. They look rather unsightly but they should still function normally on desktop environments. These may not work as intended on mobile or other non-desktop devices.</p>
+                      <a class="btn btn-dark btn-lg mt-auto" href="legacy/legacy.html" role="button">View</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </main>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

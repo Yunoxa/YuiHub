@@ -1,0 +1,137 @@
+/* CSS files add styling rules to your content */
+
+body {
+    background-image: url(https://cdn.glitch.com/7fab6675-f510-4e24-ba3a-415210525540%2Fyuisitebg1.png?v=1581532859196);
+    background-size: 1000px 1000px;
+    font-family: helvetica, arial, sans-serif;
+    margin: 2em;
+    background-color: #181818
+    
+  }
+  
+  h1 {
+    font-style: italic;
+    color: #373fff;
+    
+  }
+  .button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: purple;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  p {
+    margin: 30px;
+    background: #505050;
+    border: 1px solid black;
+    outline-offset: 15px;
+    border-bottom: 6px solid  purple;
+    
+  }
+  
+  body {font-family: Arial, Helvetica, sans-serif;}
+  
+  .navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: left;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+  
+  @media screen and (max-width: 500px) {
+     .navbar a {
+      float: none;
+      display: block;
+    }
+    
+  
+    
+  }
+  
+  
+  /*Dropdown*/
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  
+  .show {display:block;}
+  
+  h3 {
+    font-family: Sans-serif;
+    font-size: 40px;
+    color: white;
+    background: maroon;
+    border: 1px solid red;
+    outline-offset: 15px;
+    width: 40%;
+  }
