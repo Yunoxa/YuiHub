@@ -108,3 +108,36 @@ a.bg-purple:hover, a.bg-purple:focus, button.bg-purple:hover, button.bg-purple:f
 a.text-purple:hover, a.text-purple:focus {
   color: #fca3ff !important;
 }
+
+/*EXTRA*/
+.nav-pills .nav-item .nav-link {
+  color: rgb(43, 43, 43);
+}
+
+.nav-pills .nav-item .nav-link.active {
+  background-color: #2b2b2b;
+  color: #fca3ff;
+}
+
+.nav-pills .nav-link {
+  color: rgb(43, 43, 43);
+}
+
+.nav-pills .nav-link.active {
+  background-color: #2b2b2b;
+  color: #fca3ff;
+}
+
+.tab-content {
+  border-top: transparent;
+  padding: 15px;
+}
+
+.tab-content .tab-pane {
+  background-color: #FFF;
+  color: rgb(43, 43, 43);
+  min-height: 200px;
+  height: auto;
+  border-radius: 5px;
+  padding: 1rem;
+}
